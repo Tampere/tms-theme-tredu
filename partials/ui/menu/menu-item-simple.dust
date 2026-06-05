@@ -1,5 +1,5 @@
-<a href="{url}" class="navbar-item {#classes}{.}{@sep} {/sep}{/classes}">
-    {title|s}
+<a href="{url|url}" class="navbar-item {#classes}{.}{@sep} {/sep}{/classes}" {?classes.is_current}aria-current="page"{/classes.is_current}>
+    {title|html}
 
     {?icon}
         {?icon-classes}

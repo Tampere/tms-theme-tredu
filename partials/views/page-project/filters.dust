@@ -19,28 +19,11 @@
             </div>
 
             <div class="mt-4 mt-5-desktop">
-                <input type="checkbox" id="active-only" name="active-only" class="page-project__active-only"
-                       {?search.active_only}checked{/search.active_only}>
-                <label class="is-inline-block ml-2" for="active-only">{strings.search.active_only|html}</label>
+                <input type="checkbox" id="show-all-projects" name="show-all-projects" class="page-project__show-all-projects"
+                       {?search.show_all_projects}checked{/search.show_all_projects}>
+                <label class="is-inline-block ml-2" for="show-all-projects">{strings.search.show_all_projects|html}</label>
             </div>
         </div>
-
-        {?filters}
-            <div class="column is-4-desktop">
-                <label for="portfolio" class="is-sr-only">
-                    {strings.search.portfolio_label|html}
-                </label>
-
-                <select name="portfolio" id="portfolio"
-                        class="page-project__input page-project__input--portfolio">
-                    {#filters}
-                        <option value="{term_id|html}" {?selected}selected{/selected}>
-                            {name|html}
-                        </option>
-                    {/filters}
-                </select>
-            </div>
-        {/filters}
 
         <div class="column is-4-desktop">
             <button class="button is-secondary button--icon page-project__submit" type="submit">

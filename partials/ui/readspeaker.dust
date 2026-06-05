@@ -8,11 +8,14 @@
                 title="{Readspeaker.strings.button_title|html}"
                 href="//app-eu.readspeaker.com/cgi-bin/rsent?customerid=8380&amp;lang={Readspeaker.config.lang|attr}&amp;readclass={Readspeaker.config.class|attr}&amp;url={Readspeaker.config.url|s}">
 
-                <span class="listen-text has-text-weight-semibold mr-3">{Readspeaker.strings.button_text|html}</span>
+                <span class="listen-text has-text-weight-semibold mr-3">
+                    {Readspeaker.strings.button_text|html}
+                    {>"ui/icon" icon="readspeaker" class="icon--large ml-2" /}
+                </span>
 
                 <span class="rsbtn_left rsimg rspart">
                     <span class="rsbtn_text is-flex">
-    ´                    <span>{Readspeaker.strings.button_text|html}</span>
+                         <span>{Readspeaker.strings.button_text|html}</span>
                     </span>
                 </span>
 

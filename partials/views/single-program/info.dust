@@ -2,23 +2,27 @@
     <div class="container">
         <div class="columns">
             <div class="column is-10-desktop is-offset-1-desktop">
-                <div class="single-program__info-container is-flex is-justify-content-space-evenly is-flex-wrap-wrap ">
+                <dl class="single-program__info-container is-flex is-justify-content-space-evenly is-flex-wrap-wrap mt-0 mb-0">
                     {#program_info}
                         {?text}
                             <div class="single-program__info-item is-flex is-flex-direction-column is-align-items-center">
                                 {>"ui/icon" /}
 
                                 <div class="single-program__info-item-label">
-                                    {label|html}
+                                    <dt>
+                                        {label|html}
+                                    </dt>
                                 </div>
 
                                 <div class="single-program__info-item-text hyphenate">
-                                    {text|html}
+                                    <dd class="m-0">
+                                        {text|html}
+                                    </dd>
                                 </div>
                             </div>
                         {/text}
                     {/program_info}
-                </div>
+                </dl>
             </div>
         </div>
     </div>

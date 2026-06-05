@@ -19,6 +19,7 @@
                 object-fit: contain;
                 overflow: hidden;
                 aspect-ratio: 1 / 1;
+                max-width: 100%;
 
                 p {
                     // Addition lines for 2 line or multiline ellipsis
@@ -46,6 +47,7 @@
 
         &--featured {
             grid-row: span 2 !important;
+            min-height: 60vh;
 
             #{$item}__details {
                 aspect-ratio: auto;
@@ -60,16 +62,23 @@
                     fill: $color-white !important;
                 }
             }
+
+            // Use different aspect ratio for mobile to support more content for zoomed in browsers
+            @include until($tablet) {
+                #{$item}__image {
+                    padding-top: 125% !important;
+                }
+            }
         }
 
         &.has-colors-primary {
             color: $color-white;
 
-            .button {
+            .button:not(.is-secondary) {
                 color: $color-black !important;
 
                 .icon {
-                    fill: $color-white !important;
+                    fill: $color-black !important;
                 }
             }
         }
@@ -82,7 +91,7 @@
                 color: $white !important;
 
                 .icon {
-                    fill: $color-semidark-blue !important;
+                    fill: $white !important;
                 }
             }
         }

@@ -29,12 +29,20 @@ $color-background-primary-light--opaque-light: rgba($primary-light, .05) !defaul
     background-color: $color-red;
 }
 
+.has-background-fuchsia {
+    background-color: $color-fuchsia;
+}
+
 .has-background-blue {
     background-color: $color-blue;
 }
 
 .has-background-green {
     background-color: $color-green;
+}
+
+.has-background-spruce-green {
+    background-color: $color-spruce-green;
 }
 
 .has-background-light-gray {

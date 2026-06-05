@@ -5,39 +5,6 @@
 
     .overlay {
         background: linear-gradient(0deg, rgba(4, 37, 70, 0.75), rgba(4, 37, 70, 0.75));
-
-        &::before,
-        &::after {
-            content: "";
-            visibility: hidden;
-            position: absolute;
-            width: 9rem;
-            height: 9rem;
-            background-image: url('../images/hero-stripes.svg');
-            background-repeat: no-repeat;
-
-            @include from($widescreen) {
-                width: 12.5rem;
-                height: 12.5rem;
-            }
-
-            @include from(1600px) {
-                width: 14.25rem;
-                height: 14.25rem;
-            }
-        }
-
-        &::before {
-            top: 0;
-            right: 0;
-            background-position: 100% 0;
-        }
-
-        &::after {
-            bottom: 0;
-            left: 0;
-            background-position: 0 100%;
-        }
     }
 
     &--has-text-right-desktop {

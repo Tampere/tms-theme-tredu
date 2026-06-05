@@ -1,0 +1,84 @@
+{#posts}
+    <div class="program-list__item is-flex is-align-items-stretch is-justify-content has-text-weight-semibold has-height-100 is-family-secondary">
+        <div class="columns has-width-100 mt-0 mr-0 mb-0 ml-0">
+                <div class="column is-5 program-list__image-container is-relative image is-3by2-until-desktop">
+                    {?image}
+                    <a href="{permalink|url}" aria-label="{post_title|attr}" class="is-block is-absolute has-top-0 has-left-0 has-bottom-0 has-right-0" aria-hidden="true" tabindex="-1">
+                        <div class="program-list__image has-background-cover is-absolute has-top-0 has-bottom-0 has-right-0 has-left-0" {@inlinebg id=image size="large" /}>
+                        {?program-type}
+                            <span
+                                class="is-relative is-inline-block has-background-primary has-text-white is-uppercase has-line-height-1 p-2">
+                                {program-type|html}
+                            </span>
+                        {/program-type}
+                        </div>
+                    </a>
+                    {/image}
+                </div>
+
+            <div class="column is-7 has-background-light-gray pl-4 pr-4">
+                <div class="inner columns is-multiline has-text-primary m-0">
+                    <div class="column is-12 pt-0">
+                        {?post_title}
+                            <a href="{permalink|url}">
+                                <h2 class="h5 mt-4 mb-1 has-line-height-tight has-text-primary">{post_title|html}</h2>
+                            </a>
+                        {/post_title}
+
+                        <span class="is-sr-only">
+                            {Strings.s.program.program-type|html} {program-type|html}
+                        </span>
+
+                        {?fields.program_name}
+                            <span class="is-block has-text-xsmall has-line-height-tight has-text-trout has-text-weight-medium">
+                                {fields.program_name|html}
+                            </span>
+                        {/fields.program_name}
+                    </div>
+
+                    <div class="column info-column is-12 is-flex is-align-items-center">
+                        {?fields.start_date}
+                            {>"ui/icon" icon="date-range" class="icon--xlarge is-primary mr-2"  /}
+                            <span class="is-sr-only">
+                                {Strings.s.program.start-date|html} {fields.start_date|html}
+                            </span>
+                            <span class="is-inline-block has-text-small has-line-height-1" aria-hidden="true">
+                                {fields.start_date|html}
+                            </span>
+                        {/fields.start_date}
+                    </div>
+
+                    <div class="column info-column is-12 is-flex is-align-items-center">
+                        {?location}
+                            {>"ui/icon" icon="place" class="icon--xlarge is-primary mr-2"  /}
+                            <span class="is-sr-only">
+                                {Strings.s.program.location|html} {location|html}
+                            </span>
+                            <span class="is-inline-block has-text-small has-line-height-1"
+                                    aria-hidden="true">
+                                {location|html}
+                            </span>
+                        {/location}
+                    </div>
+
+                    <div class="column">
+                        {?apply-method}
+                            <span
+                                class="has-text-xsmall pt-2 pb-2 is-inline-block has-background-{apply_method_color|attr} has-text-{apply_method_txt_color|attr} is-uppercase has-line-height-1 p-2">
+                                {apply-method|html}
+                            </span>
+                        {/apply-method}
+
+                        {?fields.apply_end}
+                            <span
+                                class="is-inline-block has-text-xsmall has-line-height-tight">
+                                {fields.apply_end|html}
+                            </span>
+                        {/fields.apply_end}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{/posts}

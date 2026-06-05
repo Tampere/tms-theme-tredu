@@ -174,10 +174,10 @@
                 border: 1px solid $secondary;
 
                 &:focus {
-                    outline-color: $white;
-                    .icon {
-                        fill: $primary !important;
-                    }
+                    background-color: $primary;
+                    color: $white;
+                    outline-color: transparent;
+                    box-shadow: 0 0 0 3px $white inset;
                 }
             }
         }
@@ -219,6 +219,12 @@
                 border-bottom-right-radius: .25rem;
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
+                background-color: $secondary;
+                color: $primary;
+
+                .icon {
+                    fill: $primary !important;
+                }
 
                 &:focus {
                     outline-color: $white;

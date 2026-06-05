@@ -31,8 +31,8 @@ class PageHeroGroup {
         );
     }
 
-    /**ttred
-     * Register fields
+    /**
+     * Register fields.
      *
      * @return void
      */
@@ -88,7 +88,7 @@ class PageHeroGroup {
         ];
 
         $page_hero_overlay_field = ( new Field\TrueFalse( $strings['page_hero_overlay']['label'] ) )
-            ->set_key( "${key}_page_hero_overlay" )
+            ->set_key( "{$key}_page_hero_overlay" )
             ->set_name( 'page_hero_overlay' )
             ->set_default_value( true )
             ->set_wrapper_width( 50 )

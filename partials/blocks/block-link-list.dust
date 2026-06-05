@@ -19,12 +19,12 @@
                 <li class="mb-2">
                     <a href="{link.url|url}" target="{link.target|attr}"
                        class="is-flex is-align-items-center has-text-primary-invert">
-                        {>"ui/icon" icon="arrow-right" class="icon--small is-secondary mr-2" /}
+                        {>"ui/icon" icon="arrow-right" class="icon--small mr-2" /}
 
                         <span>{link.title|html}</span>
 
                         {?link.is_external}
-                            {>"ui/icon" icon="external" class="icon--medium is-secondary ml-1" /}
+                            {>"ui/icon" icon="external" class="icon--medium ml-1" /}
                         {/link.is_external}
                     </a>
                 </li>

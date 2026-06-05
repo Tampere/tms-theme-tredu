@@ -15,7 +15,7 @@ class Archive extends Home {
     /**
      * Hooks
      */
-    public static function hooks() : void {
+    public static function hooks(): void {
         add_action(
             'pre_get_posts',
             [ __CLASS__, 'modify_query' ]
@@ -27,7 +27,7 @@ class Archive extends Home {
      *
      * @return int|null
      */
-    protected static function get_filter_category() : ?int {
+    protected static function get_filter_category(): ?int {
         return is_tax() || is_category()
             ? get_queried_object_id()
             : null;
@@ -40,7 +40,7 @@ class Archive extends Home {
      *
      * @return void
      */
-    public static function modify_query( WP_Query $wp_query ) : void {
+    public static function modify_query( WP_Query $wp_query ): void {
         if ( is_admin() || ( ! $wp_query->is_main_query() || ! $wp_query->is_archive() ) ) {
             return;
         }
@@ -57,8 +57,33 @@ class Archive extends Home {
      *
      * @return string|null
      */
-    public function page_title() : ?string {
-        return single_term_title( '', false );
+    public function page_title(): ?string {
+        return \single_term_title( '', false );
+    }
+
+    /**
+     * Get the page description.
+     *
+     * @return string|null
+     */
+    public function page_description(): ?string {
+        return \term_description( \get_queried_object() );
+    }
+
+    /**
+     * Get the blog-category image.
+     *
+     * @return int|null
+     */
+    public function blog_category_image(): ?int {
+        $queried_object = \get_queried_object();
+        $image_field    = \get_field( 'image', $queried_object );
+
+        if ( ! $image_field ) {
+            return null;
+        }
+
+        return $image_field['ID'];
     }
 
     /**
@@ -75,7 +100,7 @@ class Archive extends Home {
      *
      * @return array
      */
-    protected function get_filter_categories() : array {
+    protected function get_filter_categories(): array {
         $queried_object = get_queried_object();
         $taxonomy       = '';
 

@@ -27,7 +27,7 @@
             }
         }
 
-        &__active-only {
+        &__show-all-projects {
             display: inline-grid;
             place-content: center;
             width: 1.25rem;
@@ -51,12 +51,6 @@
             &:checked::before {
                 visibility: visible;
             }
-        }
-    }
-
-    .tredu-events {
-        .image {
-            display: none;
         }
     }
 }

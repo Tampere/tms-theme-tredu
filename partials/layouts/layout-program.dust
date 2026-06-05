@@ -18,7 +18,10 @@
     </div>
 
     <div class="container">
-        {>"views/page-program/program-list" posts=posts /}
+        <div id="js-article-list" data-current-set="1" data-found-posts="{found_posts}" data-per-page="{number|attr}"
+        data-educational-background="{educational_background|attr}" data-location="{location|attr}" data-profession="{profession|attr}" data-program-type="{program_type|attr}" data-apply-method="{apply_method|attr}" data-apply-start="{apply_start|attr}">
+            {>"views/page-program/program-list" posts=posts /}
+        </div>
 
         {?link.url}
             {?link.title}

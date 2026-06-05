@@ -1,4 +1,10 @@
 .entry {
+    &__content {
+        max-width: 58.5rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     &__content,
     .topical-content .field-body {
         > p {

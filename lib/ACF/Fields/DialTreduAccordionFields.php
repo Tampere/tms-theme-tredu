@@ -42,7 +42,7 @@ class DialTreduAccordionFields extends \Geniem\ACF\Field\Group {
      */
     protected function sub_fields() : array {
         $strings = [
-            'title'    => [
+            'title' => [
                 'label'        => 'Otsikko',
                 'instructions' => '',
             ],
@@ -59,19 +59,19 @@ class DialTreduAccordionFields extends \Geniem\ACF\Field\Group {
         $key = $this->get_key();
 
         $title_field = ( new Field\Text( $strings['title']['label'] ) )
-            ->set_key( "${key}_title" )
+            ->set_key( "{$key}_title" )
             ->set_name( 'title' )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['title']['instructions'] );
 
         $desription_field = ( new Field\Textarea( $strings['description']['label'] ) )
-            ->set_key( "${key}_description" )
+            ->set_key( "{$key}_description" )
             ->set_name( 'description' )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['description']['instructions'] );
 
         $item_field = ( new Field\PostObject( $strings['items']['label'] ) )
-            ->set_key( "${key}_items" )
+            ->set_key( "{$key}_items" )
             ->set_name( 'items' )
             ->set_post_types( [ PostType\DialTredu::SLUG ] )
             ->allow_null()

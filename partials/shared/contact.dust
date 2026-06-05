@@ -1,4 +1,4 @@
-<div class="contacts__item column {column_class|attr} has-text-small keep-vertical-spacing">
+<div class="contacts__item column has-text-small keep-vertical-spacing">
     <div class="columns contacts__inner-columns">
         <div class="contacts__item-inner column is-10-tablet is-12-desktop p-6-desktop">
             {>"shared/contact-item" /}

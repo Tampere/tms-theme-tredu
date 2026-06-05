@@ -5,12 +5,11 @@
 {?sub_menu}
     <li class="navbar-item has-dropdown {#classes}{.}{@sep} {/sep}{/classes}">
         <div class="navbar-dropdown-control">
-            <a class="navbar-link is-arrowless" href="{url}">
-                {title|s}
-            </a>
-
-            <button class="dropdown-toggler" aria-expanded=false aria-controls="js-navbar-menu-item-{$idx}">
-                <span class="is-sr-only">{data.open_menu|s}</span>
+            <button class="dropdown-toggler pl-0 pr-4" aria-expanded=false aria-controls="js-navbar-menu-item-{$idx|attr}" {?classes.is_current_parent}aria-current="true"{/classes.is_current_parent}>
+                <span class="navbar-link-title">
+                    {title|html}
+                </span>
+                <span class="is-sr-only">{data.open_menu|html}</span>
 
                 <span aria-hidden="true">
                     {>"ui/icon" icon="chevron-down" class="icon--medium" /}
@@ -18,10 +17,12 @@
             </button>
         </div>
 
-        <div class="navbar-dropdown is-hidden-touch" id="js-navbar-menu-item-{$idx}">
+        <ul class="navbar-dropdown is-hidden-touch is-unstyled pt-2 pb-2" id="js-navbar-menu-item-{$idx|attr}">
             {#sub_menu}
-                {>"ui/menu/menu-item-simple" /}
+                <li>
+                    {>"ui/menu/menu-item-simple" /}
+                </li>
             {/sub_menu}
-        </div>
+        </ul>
     </li>
 {/sub_menu}

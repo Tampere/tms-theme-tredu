@@ -5,10 +5,13 @@
 @import "themes/includes";
 
 $color-light-blueishgray: #E5EEF8;
-$color-light-gray: #F8F8F8;
+$color-light-gray: #F1EEEB;
 $color-semilight-gray: #F2F4F6;
 $color-green: #ABC872;
+$color-spruce-green: #397368;
+$color-light-petrol: #8CC1B3;
 $color-red: #EB5E58;
+$color-fuchsia: #A5407B;
 $color-dark-blue: #042546;
 $color-blue: #06B3EF;
 $color-semidark-blue: #0099CC;
@@ -18,7 +21,7 @@ $color-trout: #525C65;
 
 $primary: $color-dark-blue;
 $primary-invert: $color-white;
-$primary-light: $color-light-blueishgray;
+$primary-light: $color-light-gray;
 $primary-light-invert: $color-white;
 $primary-dark: bulmaDarken($primary, 15);
 $primary-dark-invert: $color-white;
@@ -37,7 +40,7 @@ $dark-invert: $primary-dark-invert;
 $divider: $color-dark-grey;
 $divider-invert: $color-dark-grey;
 
-$text: #525C65;
+$text: $color-black;
 $link: $primary;
 
 $colors-palette-primary: ($primary, $primary-invert, $primary-light, $primary-dark);

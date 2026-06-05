@@ -44,11 +44,11 @@ class Search extends BaseModel {
      * @return void
      */
     public static function hooks() {
-        add_action( 'pre_get_posts', [ __CLASS__, 'modify_query' ] );
-        add_filter( 'redipress/scorer', [ __CLASS__, 'set_search_scorer' ], 10, 1 );
-        add_filter( 'redipress/schema_fields', [ __CLASS__, 'set_fields_weight' ], 10, 1 );
-        add_filter( 'redipress/ignore_query_vars', [ __CLASS__, 'set_ignored_query_vars' ], 10, 1 );
-        add_filter( 'the_seo_framework_title_from_generation', Closure::fromCallable( [ __CLASS__, 'alter_title' ] ) );
+        \add_action( 'pre_get_posts', [ __CLASS__, 'modify_query' ] );
+        \add_filter( 'redipress/scorer', [ __CLASS__, 'set_search_scorer' ], 10, 1 );
+        \add_filter( 'redipress/index/posts/schema_fields', [ __CLASS__, 'set_fields_weight' ], 10, 1 );
+        \add_filter( 'redipress/ignore_query_vars', [ __CLASS__, 'set_ignored_query_vars' ], 10, 1 );
+        \add_filter( 'the_seo_framework_title_from_generation', Closure::fromCallable( [ __CLASS__, 'alter_title' ] ) );
     }
 
     /**

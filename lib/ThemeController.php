@@ -73,5 +73,6 @@ class ThemeController {
         \Home::hooks();
         \Search::hooks();
         \ArchiveBlogArticle::hooks();
+        \TMS\Theme\Tredu\CronJobs::init();
     }
 }

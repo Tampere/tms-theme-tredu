@@ -51,6 +51,17 @@ a {
     }
 }
 
+.entry__content {
+    p a {
+        text-decoration: underline;
+
+        &:hover,
+        &.is-hovered {
+            text-decoration: none;
+        }
+    }
+}
+
 .has-text-paragraph {
     color: $text !important; // sass-lint:disable-line no-important
 }

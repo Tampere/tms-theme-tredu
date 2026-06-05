@@ -3,7 +3,7 @@
         <a href="{link.url}" target="{link.target}" class="{classes|s}">
             {link.title|s}
             {?use_icon}
-                {>"ui/icon" class="icon--medium is-secondary ml-2" /}
+                {>"ui/icon" class="icon--medium ml-2" /}
             {/use_icon}
         </a>
     {/link.title}

@@ -34,7 +34,7 @@ class PageProject extends BaseModel {
     /**
      * Project category active only input name.
      */
-    const ACTIVE_ONLY_QUERY_VAR = 'active-only';
+    const SHOW_ALL_PROJECTS_QUERY_VAR = 'show-all-projects';
 
     /**
      * Pagination data.
@@ -54,8 +54,8 @@ class PageProject extends BaseModel {
      * Hooks
      */
     public function hooks() : void {
-        add_filter( 'tms/theme/breadcrumbs/show_breadcrumbs_in_header', fn() => false );
-        add_filter( 'the_seo_framework_title_from_generation', Closure::fromCallable( [ __CLASS__, 'alter_title' ] ) );
+        \add_filter( 'tms/theme/breadcrumbs/show_breadcrumbs_in_header', fn() => false );
+        \add_filter( 'the_seo_framework_title_from_generation', Closure::fromCallable( [ __CLASS__, 'alter_title' ] ) );
     }
 
     /**
@@ -71,7 +71,7 @@ class PageProject extends BaseModel {
      * @return false|int
      */
     public function hero() {
-        return has_post_thumbnail() ? get_post_thumbnail_id() : false;
+        return \has_post_thumbnail() ? \get_post_thumbnail_id() : false;
     }
 
     /**
@@ -90,7 +90,7 @@ class PageProject extends BaseModel {
      * @return mixed
      */
     protected static function get_search_query_var() {
-        return get_query_var( self::SEARCH_QUERY_VAR, false );
+        return \get_query_var( self::SEARCH_QUERY_VAR, false );
     }
 
     /**
@@ -98,8 +98,8 @@ class PageProject extends BaseModel {
      *
      * @return mixed
      */
-    protected static function get_active_only_query_var() {
-        return get_query_var( self::ACTIVE_ONLY_QUERY_VAR, false );
+    protected static function get_show_all_projects_query_var() {
+        return \get_query_var( self::SHOW_ALL_PROJECTS_QUERY_VAR, false );
     }
 
     /**
@@ -108,7 +108,7 @@ class PageProject extends BaseModel {
      * @return int|null
      */
     protected static function get_filter_query_var() {
-        $value = get_query_var( self::PORTFOLIO_QUERY_VAR, false );
+        $value = \get_query_var( self::PORTFOLIO_QUERY_VAR, false );
 
         return ! $value
             ? null
@@ -121,7 +121,7 @@ class PageProject extends BaseModel {
      * @return string
      */
     public function page_title() : string {
-        return get_the_title();
+        return \get_the_title();
     }
 
     /**
@@ -146,7 +146,7 @@ class PageProject extends BaseModel {
                 'submit_value'      => __( 'Search', 'tms-theme-tredu' ),
                 'input_placeholder' => __( 'Search query', 'tms-theme-tredu' ),
                 'portfolio_label'   => __( 'Choose a portfolio', 'tms-theme-tredu' ),
-                'active_only'       => __( 'Active projects only', 'tms-theme-tredu' ),
+                'show_all_projects' => __( 'Also show completed projects', 'tms-theme-tredu' ),
             ],
             'terms'      => [
                 'show_all' => __( 'Show All', 'tms-theme-tredu' ),
@@ -165,13 +165,13 @@ class PageProject extends BaseModel {
      */
     public function search() : array {
         $this->search_data        = new stdClass();
-        $this->search_data->query = get_query_var( self::SEARCH_QUERY_VAR );
+        $this->search_data->query = \get_query_var( self::SEARCH_QUERY_VAR );
 
         return [
             'input_search_name' => self::SEARCH_QUERY_VAR,
             'current_search'    => $this->search_data->query,
-            'action'            => get_permalink( get_the_ID() ),
-            'active_only'       => self::get_active_only_query_var(),
+            'action'            => \get_permalink( get_the_ID() ),
+            'show_all_projects' => self::get_show_all_projects_query_var(),
         ];
     }
 
@@ -181,12 +181,12 @@ class PageProject extends BaseModel {
      * @return array
      */
     public function filters() {
-        $portfolios = get_terms( [
+        $portfolios = \get_terms( [
             'taxonomy'   => Portfolio::SLUG,
             'hide_empty' => true,
         ] );
 
-        if ( empty( $portfolios ) || is_wp_error( $portfolios ) ) {
+        if ( empty( $portfolios ) || \is_wp_error( $portfolios ) ) {
             return [];
         }
 
@@ -219,17 +219,22 @@ class PageProject extends BaseModel {
     public function results() {
         $args = [
             'post_type'      => Project::SLUG,
-            'paged'          => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
+            'paged'          => ( \get_query_var( 'paged' ) ) ? \get_query_var( 'paged' ) : 1,
             'posts_per_page' => 12,
+            'order'          => 'ASC',
+            'orderby'        => 'title',
         ];
 
-        $active_only = self::get_active_only_query_var();
+        $show_all_projects = self::get_show_all_projects_query_var();
 
-        if ( ! empty( $active_only ) ) {
+        // Show only active projects on default
+        if ( $show_all_projects === false ) {
             $args['meta_query'] = [
-                [
-                    'key'   => 'is_active',
-                    'value' => '1',
+                'active_project_clause' => [
+                    [
+                        'key'   => 'is_active',
+                        'value' => '1',
+                    ],
                 ],
             ];
         }
@@ -272,12 +277,13 @@ class PageProject extends BaseModel {
      */
     protected function format_posts( array $posts ) : array {
         return array_map( function ( $item ) {
-            $item->permalink = get_the_permalink( $item->ID );
-            $item->duration  = get_field( 'duration', $item->ID );
+            $item->permalink  = \get_the_permalink( $item->ID );
+            $item->duration   = \get_field( 'duration', $item->ID );
+            $item->title_lang = \get_field( 'title_lang', $item->ID );
 
-            $terms = wp_get_post_terms( $item->ID, Portfolio::SLUG );
+            $terms = \wp_get_post_terms( $item->ID, Portfolio::SLUG );
 
-            if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+            if ( ! empty( $terms ) && ! \is_wp_error( $terms ) ) {
                 $item->portfolio = $terms[0];
             }
 
@@ -294,7 +300,7 @@ class PageProject extends BaseModel {
      */
     protected function set_pagination_data( $wp_query ) : void {
         $per_page = '12';
-        $paged    = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+        $paged    = ( \get_query_var( 'paged' ) ) ? \get_query_var( 'paged' ) : 1;
 
         $this->pagination           = new stdClass();
         $this->pagination->page     = $paged;

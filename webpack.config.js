@@ -15,14 +15,13 @@ const wpProjectUrl = 'https://client-tms.test';
 // Theme paths.
 const wpThemePath = path.resolve( __dirname );
 const themeName = path.basename( wpThemePath );
-const themePath = `/web/app/themes/${ themeName }`;
+const themePath = `/app/themes/${ themeName }`;
 const themePublicPath = `${ themePath }/assets/dist/`;
 const themeAdminEntry = `${ wpThemePath }/assets/scripts/admin.js`;
 const themeOutput = `${ wpThemePath }/assets/dist`;
 
 const entryPoints = {
     admin: [ themeAdminEntry ],
-    main: [ `${ wpThemePath }/assets/scripts/theme-tredu.js` ],
     theme_tredu: [ `${ wpThemePath }/assets/scripts/theme-tredu.js` ],
 };
 
@@ -101,7 +100,7 @@ const allModules = {
             ],
         },
         {
-            test: /\.(eot|svg|ttf|woff(2)?)(\?[a-z0-9=\.]+)?$/,
+            test: /\.(eot|svg|ttf|otf|woff(2)?)(\?[a-z0-9=\.]+)?$/,
             exclude: [ /assets\/images/, /assets\/icons/, /node_modules/ ],
             use: 'file-loader?name=[name].[ext]',
         },
@@ -176,9 +175,7 @@ if ( isProduction ) {
 
         // Optimize for production build.
         new TerserPlugin( {
-            cache: true,
             parallel: true,
-            sourceMap: true,
             terserOptions: {
                 output: {
                     comments: false,
@@ -192,16 +189,11 @@ if ( isProduction ) {
     ];
 
     // Delete distribution folder for production build.
-    allPlugins.push( new CleanWebpackPlugin( {
-        cleanStaleWebpackAssets: true,
-    } ) );
+    allPlugins.push( new CleanWebpackPlugin( { } ) );
 }
 
 module.exports = [
     {
-        node: {
-            fs: 'empty', // <- prevent "fs not found"
-        },
 
         resolve: {
             alias: {

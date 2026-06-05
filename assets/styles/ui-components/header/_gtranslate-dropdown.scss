@@ -1,0 +1,46 @@
+.gtranslate-wrapper {
+    .is-open {
+        display: block !important;
+    }
+
+    .gtranslate-trigger {
+        width: 2.375rem;
+        height: 2.375rem;
+
+        svg {
+            margin: 0 !important;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        @include from($tablet) {
+            width: rem(50px);
+            height: rem(50px);
+        }
+    }
+
+    .gtranslate-dropdown {
+        background-color: $color-light-gray;
+        right: 0;
+        z-index: 1;
+
+        .is-small {
+            font-size: 11px;
+        }
+
+        .gtranslate-cookie-text-container {
+            width: 15rem;
+
+            @include from($tablet) {
+                width: 20rem;
+            }
+        }
+    }
+}
+
+.gtranslate-wrapper,
+.skiptranslate {
+    color: $black !important;
+}

@@ -82,6 +82,10 @@ class ProgramFields extends \Geniem\ACF\Field\Group {
                 'label'        => 'Linkki',
                 'instructions' => '',
             ],
+            'load_more_toggle'       => [
+                'label'        => 'Näytä "Lataa lisää"-painike',
+                'instructions' => '',
+            ],
         ];
 
         try {
@@ -102,13 +106,13 @@ class ProgramFields extends \Geniem\ACF\Field\Group {
         $key = $this->get_key();
 
         $title_field = ( new Field\Text( $this->strings['title']['label'] ) )
-            ->set_key( "${key}_title" )
+            ->set_key( "{$key}_title" )
             ->set_name( 'title' )
             ->set_wrapper_width( 50 )
             ->set_instructions( $this->strings['title']['instructions'] );
 
         $description_field = ( new Field\Textarea( $this->strings['description']['label'] ) )
-            ->set_key( "${key}_description" )
+            ->set_key( "{$key}_description" )
             ->set_name( 'description' )
             ->set_wrapper_width( 50 )
             ->set_rows( 4 )
@@ -121,14 +125,14 @@ class ProgramFields extends \Geniem\ACF\Field\Group {
             ->set_instructions( $this->strings['link']['instructions'] );
 
         $apply_start_field = ( new Field\DatePicker( $this->strings['apply_start']['label'] ) )
-            ->set_key( "${key}_apply_start" )
+            ->set_key( "{$key}_apply_start" )
             ->set_name( 'apply_start' )
             ->set_return_format( 'Y-m-d' )
             ->set_wrapper_width( 50 )
             ->set_instructions( $this->strings['apply_start']['instructions'] );
 
         $apply_method_field = ( new Field\Taxonomy( $this->strings['apply_method']['label'] ) )
-            ->set_key( "${key}_apply_method" )
+            ->set_key( "{$key}_apply_method" )
             ->set_name( 'apply_method' )
             ->set_taxonomy( ApplyMethod::SLUG )
             ->set_return_format( 'id' )
@@ -136,7 +140,7 @@ class ProgramFields extends \Geniem\ACF\Field\Group {
             ->set_instructions( $this->strings['apply_method']['instructions'] );
 
         $program_type_field = ( new Field\Taxonomy( $this->strings['program_type']['label'] ) )
-            ->set_key( "${key}_program_type" )
+            ->set_key( "{$key}_program_type" )
             ->set_name( 'program_type' )
             ->set_taxonomy( ProgramType::SLUG )
             ->set_return_format( 'id' )
@@ -144,7 +148,7 @@ class ProgramFields extends \Geniem\ACF\Field\Group {
             ->set_instructions( $this->strings['program_type']['instructions'] );
 
         $profession_field = ( new Field\Taxonomy( $this->strings['profession']['label'] ) )
-            ->set_key( "${key}_profession" )
+            ->set_key( "{$key}_profession" )
             ->set_name( 'profession' )
             ->set_taxonomy( Profession::SLUG )
             ->set_return_format( 'id' )
@@ -152,7 +156,7 @@ class ProgramFields extends \Geniem\ACF\Field\Group {
             ->set_instructions( $this->strings['profession']['instructions'] );
 
         $location_field = ( new Field\Taxonomy( $this->strings['location']['label'] ) )
-            ->set_key( "${key}_location" )
+            ->set_key( "{$key}_location" )
             ->set_name( 'location' )
             ->set_taxonomy( Location::SLUG )
             ->set_return_format( 'id' )
@@ -160,7 +164,7 @@ class ProgramFields extends \Geniem\ACF\Field\Group {
             ->set_instructions( $this->strings['location']['instructions'] );
 
         $educational_background_field = ( new Field\Taxonomy( $this->strings['educational_background']['label'] ) )
-            ->set_key( "${key}_educational_background" )
+            ->set_key( "{$key}_educational_background" )
             ->set_name( 'educational_background' )
             ->set_taxonomy( EducationalBackground::SLUG )
             ->set_return_format( 'id' )
@@ -168,13 +172,20 @@ class ProgramFields extends \Geniem\ACF\Field\Group {
             ->set_instructions( $this->strings['educational_background']['instructions'] );
 
         $limit_field = ( new Field\Number( $this->strings['limit']['label'] ) )
-            ->set_key( "${key}_number" )
+            ->set_key( "{$key}_number" )
             ->set_name( 'number' )
             ->set_min( 4 )
             ->set_max( 12 )
             ->set_default_value( 12 )
             ->set_wrapper_width( 50 )
             ->set_instructions( $this->strings['limit']['instructions'] );
+
+        $load_more_toggle = ( new Field\TrueFalse( $this->strings['load_more_toggle']['label'] ) )
+            ->set_key( "{$key}_load_more_toggle" )
+            ->set_name( 'load_more_toggle' )
+            ->use_ui()
+            ->set_wrapper_width( 100 )
+            ->set_instructions( $this->strings['load_more_toggle']['instructions'] );
 
         return [
             $title_field,
@@ -187,6 +198,7 @@ class ProgramFields extends \Geniem\ACF\Field\Group {
             $educational_background_field,
             $limit_field,
             $link_field,
+            $load_more_toggle,
         ];
     }
 }

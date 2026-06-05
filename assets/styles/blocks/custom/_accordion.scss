@@ -1,4 +1,22 @@
 .accordion {
+    &__open-all,
+    &__close-all {
+        color: $primary !important;
+        background-color: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+
+        .icon {
+            margin-left: $theme-spacing-three-quarters !important;
+        }
+
+        &:hover {
+            filter: none !important;
+            box-shadow: none !important;
+            text-decoration: underline !important;
+        }
+    }
+
     &__content {
         p {
             clear: both;
@@ -25,6 +43,14 @@
             .icon {
                 transform: rotate(180deg);
             }
+
+            .icon-text--open {
+                display: none;
+            }
+
+            .icon-text--close {
+                display: inline-block;
+            }
         }
 
         &:hover,
@@ -34,8 +60,19 @@
     }
 
     &__title-icon {
-        .icon {
-            transition: transform ease-in .2s;
+        align-items: center;
+    }
+
+    &__icon-text {
+        color: $primary;
+        font-size: $base-size;
+
+        &.icon-text--open {
+            display: inline-block;
+        }
+
+        &.icon-text--close {
+            display: none;
         }
     }
 

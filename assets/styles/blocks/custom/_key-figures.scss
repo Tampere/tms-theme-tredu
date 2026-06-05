@@ -1,6 +1,6 @@
 .key-figures {
     &__number {
-        font-family: $family-tertiary;
+        font-family: $family-secondary;
 
         &.is-text-huge {
             @include from($widescreen) {
@@ -21,20 +21,20 @@
 
     &__row {
         &--light {
-            background-color: #eff6ff;
-            color: $color-semidark-blue;
+            background-color: $color-light-gray;
+            color: $text;
 
             .key-figures__description {
-                color: $color-black;
+                color: $text;
             }
         }
 
         &--accent {
-            background-color: $color-green;
-            color: $color-dark-blue;
+            background-color: $color-light-petrol;
+            color: $text;
 
             .key-figures__description {
-                color: $color-black;
+                color: $text;
             }
         }
 

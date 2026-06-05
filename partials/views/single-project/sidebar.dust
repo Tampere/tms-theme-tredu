@@ -6,10 +6,6 @@
     {>"views/single-project/sidebar__item" icon="date-range" sidebar_title=sidebar.duration.duration_title sidebar_content=sidebar.duration.duration /}
 {/isset}
 
-{@isset key1=sidebar.portfolio.portfolio_title key2=sidebar.portfolio.portfolio_text method="AND" }
-    {>"views/single-project/sidebar__item" icon="save" sidebar_title=sidebar.portfolio.portfolio_title sidebar_content=sidebar.portfolio.portfolio_text /}
-{/isset}
-
 {@isset key1=sidebar.contacts.meta_contacts_title key2=sidebar.contacts.contacts method="AND" }
     {>"views/single-project/sidebar__item" icon="user" sidebar_title=sidebar.contacts.meta_contacts_title sidebar_content=sidebar.contacts.contacts /}
 {/isset}

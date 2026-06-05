@@ -11,14 +11,6 @@ export default class ProgramSearch {
 
     programSearch() {
         const form = document.querySelector( '#program-search' );
-        const selectElements = document.querySelectorAll( '#program-search select.search-filter' );
-        selectElements.forEach( ( selectElem ) => {
-            selectElem.addEventListener( 'change', () => {
-                form.submit();
-            } );
-
-        } );
-
         const removeFilterBtns = document.querySelectorAll( '#program-search .remove-filter' );
         removeFilterBtns.forEach( ( button ) => {
             button.addEventListener( 'click', () => {

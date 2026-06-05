@@ -16,6 +16,12 @@
         grid-template-columns: 1fr 1fr;
     }
 
+    &__item {
+        .info-column {
+            max-width: 100%;
+        }
+    }
+
     a {
         &:focus {
             @extend .button-state-focus;
@@ -41,6 +47,10 @@
         }
     }
 
+    .is-checkradio + label {
+        line-height: inherit;
+    }
+
     select {
         appearance: none;
     }
@@ -53,4 +63,48 @@
             pointer-events: none;
         }
     }
+
+    ul.ui-menu {
+        .ui-menu-item {
+            margin-bottom: .5rem;
+
+            .ui-menu-item-wrapper {
+                &.ui-state-active {
+                    background-color: $color-grey;
+                }
+            }
+        }
+    }
+
+    .bulmally-accordion {
+        .accordion__title-button {
+            @include from($mobile) {
+                width: auto;
+            }
+        }
+    }
+}
+
+.load-more-spinner {
+    width: auto;
+    height: auto;
+        &::after {
+            content: " ";
+            display: block;
+            width: 22px;
+            height: 22px;
+            margin: 0;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            border-color: #fff transparent #fff transparent;
+            animation: spinner-spin 1.2s linear infinite;
+        }
+        @keyframes spinner-spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 }

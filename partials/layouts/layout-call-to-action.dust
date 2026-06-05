@@ -31,7 +31,17 @@
                             </div>
                         {/description}
 
-                        {>"ui/button-link" classes=.button_colors icon="arrow-right" icon_classes="icon--medium"  /}
+                        {?link}
+                            <div class="w-100">
+                                {>"ui/button-link" classes=.button_colors icon="arrow-right" icon_classes="icon--medium" /}
+                            </div>
+                        {/link}
+
+                        {?link_second}
+                            <div class="w-100 mt-4">
+                                {>"ui/button-link" classes=.button_colors icon="arrow-right" icon_classes="icon--medium" link=link_second /}
+                            </div>
+                        {/link_second}
                     </div>
                 </div>
             </div>

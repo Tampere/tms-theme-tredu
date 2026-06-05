@@ -31,7 +31,7 @@ class TreduEventsSettingsTab extends Tab {
      * @var array
      */
     protected $strings = [
-        'tab'          => 'Tredun tapahtumat',
+        'tab'               => 'Tredun tapahtumat',
         'tredu_events_page' => [
             'title'        => 'Tredun tapahtumasivu',
             'instructions' => 'Esitetään Tredun tapahtumien murupolussa.',

@@ -130,11 +130,11 @@ class LinkedEvents implements Controller {
         $event->description = $event->description->{$lang_key} ?? null;
 
         if ( $start_time ) {
-            $event->startDate = $start_time->format( 'Y-m-d' );
+            $event->startDate = $start_time->format( 'Y-m-d' ); // phpcs:ignore
         }
 
         if ( $end_time ) {
-            $event->endDate = $end_time->format( 'Y-m-d' );
+            $event->endDate = $end_time->format( 'Y-m-d' ); // phpcs:ignore
         }
 
         $event->location->address = $event->location->street_address->{$lang_key};

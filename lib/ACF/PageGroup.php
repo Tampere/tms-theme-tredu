@@ -160,7 +160,7 @@ class PageGroup {
         ];
 
         $components_field = ( new Field\FlexibleContent( $strings['components']['title'] ) )
-            ->set_key( "${key}_components" )
+            ->set_key( "{$key}_components" )
             ->set_name( 'components' )
             ->set_instructions( $strings['components']['instructions'] );
 
@@ -190,6 +190,8 @@ class PageGroup {
                 Layouts\ShareLinksLayout::class,
                 Layouts\ProgramLayout::class,
                 Layouts\TreduEventsLayout::class,
+                Layouts\VideoLayout::class,
+                Layouts\SomeLinkListLayout::class,
             ],
             $key
         );

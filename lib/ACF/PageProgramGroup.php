@@ -80,7 +80,7 @@ class PageProgramGroup {
         ];
 
         $page_program_fields = ( new Field\Wysiwyg( $strings['page_program_fields']['label'] ) )
-            ->set_key( "${key}_page_program_description" )
+            ->set_key( "{$key}_page_program_description" )
             ->set_name( 'page_program_description' )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['page_program_fields']['instructions'] );

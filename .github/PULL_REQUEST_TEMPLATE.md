@@ -1,4 +1,3 @@
-CR: https://geniemdev.atlassian.net/browse/TMS-627
 <!--- Provide a general summary of your changes in the Title above -->
 
 ## Description

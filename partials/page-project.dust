@@ -44,7 +44,15 @@
                                 </header>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="entry__content">
+                        {@content /}
+                    </div>
+
+                    {>"ui/components" components=Page.components /}
+
+                    <div class="container">
                         <div class="columns">
                             <div class="column is-12">
                                 {>"views/page-project/filters" /}
@@ -64,7 +72,7 @@
                                         <div class="column">
                                             <div
                                                 class="inner pt-4 pb-4 pt-5-desktop pb-5-desktop keep-vertical-spacing has-border-bottom-1 has-border-grey">
-                                                <h3 class="h4 mt-4 mb-4 has-line-height-tight">
+                                                <h3 class="h4 mt-4 mb-4 has-line-height-tight" {?title_lang}lang="{title_lang|attr}"{/title_lang}>
                                                     <a href="{permalink|url}">
                                                         {post_title|html}
                                                     </a>
@@ -75,11 +83,6 @@
                                                         <span
                                                             class="is-inline-block mr-3">{duration.duration|html}</span>
                                                     {/duration.duration}
-
-                                                    {?portfolio}
-                                                        <span
-                                                            class="pill is-inline-block mr-3">{portfolio.name|html}</span>
-                                                    {/portfolio}
                                                 </div>
                                             </div>
                                         </div>
@@ -97,8 +100,6 @@
 
                     {>"shared/archive-pagination" /}
                 </section>
-
-                {>"ui/components" components=Page.components /}
             </article>
         </main>
     {/PageProject}

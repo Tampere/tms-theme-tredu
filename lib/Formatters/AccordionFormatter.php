@@ -53,6 +53,13 @@ class AccordionFormatter implements \TMS\Theme\Tredu\Interfaces\Formatter {
             return $section;
         }, $sections );
 
+        $data['strings'] = [
+            'expand'       => \_x( 'Expand', 'theme-frontend', 'tms-theme-tredu' ),
+            'collapse'     => \_x( 'Collapse', 'theme-frontend', 'tms-theme-tredu' ),
+            'expand_all'   => \_x( 'Expand all sections', 'theme-frontend', 'tms-theme-tredu' ),
+            'collapse_all' => \_x( 'Collapse all sections', 'theme-frontend', 'tms-theme-tredu' ),
+        ];
+
         return $data;
     }
 }

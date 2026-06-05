@@ -1,0 +1,22 @@
+<div id="js-favorites-container"
+    class="site-header__popup is-hidden is-absolute has-right-0 has-bottom-0 has-left-0 has-transform-y-100 {Header.colors.search_popup_container|attr}">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-10 is-offset-1-tablet is-8-desktop is-offset-2-desktop">
+                <div class="pt-6 pb-6 pt-8-desktop pb-8-desktop pr-2 pl-2">
+                    <div id="header-favorites-title" class="popup__label h4 mb-6">
+                        <h2>{Strings.s.program_favorite.favorites_title|html}</h2>
+                    </div>
+
+                    <ul id="js-favorite-programs" class="grid is-hidden"></ul>
+                    <div id="js-favorites-no-results" class="is-hidden">
+                        <p class="is-size-5">{Strings.s.program_favorite.no_favorites_text|html}</p>
+                    </div>
+                    <button id="js-favorites-close" aria-controls="js-favorites-container" class="button is-secondary is-outlined js-toggle">
+                        {Strings.s.program_favorite.close_favorites_text|html}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -91,19 +91,19 @@ class DialTreduGroup {
             ->set_placement( 'left' );
 
         $ingress_field = ( new Field\Textarea( $strings['ingress']['title'] ) )
-            ->set_key( "${key}_ingress" )
+            ->set_key( "{$key}_ingress" )
             ->set_name( 'ingress' )
             ->set_maxlength( 600 )
             ->set_instructions( $strings['ingress']['instructions'] );
 
         $icon_field = ( new Field\Image( $strings['icon']['title'] ) )
-            ->set_key( "${key}_icon" )
+            ->set_key( "{$key}_icon" )
             ->set_name( 'icon' )
             ->set_return_format( 'id' )
             ->set_instructions( $strings['icon']['instructions'] );
 
         $link_field = ( new Field\Link( $strings['link']['title'] ) )
-            ->set_key( "${key}_link" )
+            ->set_key( "{$key}_link" )
             ->set_name( 'link' )
             ->set_instructions( $strings['link']['instructions'] );
 

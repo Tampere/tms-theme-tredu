@@ -90,33 +90,33 @@ class TreduEventsFields extends \Geniem\ACF\Field\Group {
         $key = $this->get_key();
 
         $title_field = ( new Field\Text( $strings['title']['label'] ) )
-            ->set_key( "${key}_title" )
+            ->set_key( "{$key}_title" )
             ->set_name( 'title' )
             ->set_instructions( $strings['title']['instructions'] );
 
         $program_type_field = ( new Field\Taxonomy( $strings['program_type']['title'] ) )
-            ->set_key( "${key}_program_type" )
+            ->set_key( "{$key}_program_type" )
             ->set_name( 'program_type' )
             ->set_taxonomy( ProgramType::SLUG )
             ->set_wrapper_width( 33 )
             ->set_instructions( $strings['program_type']['instructions'] );
 
         $profession_type_field = ( new Field\Taxonomy( $strings['profession']['title'] ) )
-            ->set_key( "${key}_profession" )
+            ->set_key( "{$key}_profession" )
             ->set_name( 'profession' )
             ->set_taxonomy( Profession::SLUG )
             ->set_wrapper_width( 33 )
             ->set_instructions( $strings['profession']['instructions'] );
 
         $location_type_field = ( new Field\Taxonomy( $strings['location']['title'] ) )
-            ->set_key( "${key}_location" )
+            ->set_key( "{$key}_location" )
             ->set_name( 'location' )
             ->set_taxonomy( Location::SLUG )
             ->set_wrapper_width( 33 )
             ->set_instructions( $strings['location']['instructions'] );
 
         $delivery_method_type_field = ( new Field\Taxonomy( $strings['delivery_method']['title'] ) )
-            ->set_key( "${key}_delivery_method" )
+            ->set_key( "{$key}_delivery_method" )
             ->set_name( 'delivery_method' )
             ->set_taxonomy( DeliveryMethod::SLUG )
             ->set_wrapper_width( 33 )
@@ -126,7 +126,7 @@ class TreduEventsFields extends \Geniem\ACF\Field\Group {
         $return_format  = 'Y-m-d';
 
         $start_date_field = ( new Field\DatePicker( $strings['start_date']['title'] ) )
-            ->set_key( "${key}_start_date" )
+            ->set_key( "{$key}_start_date" )
             ->set_name( 'start_date' )
             ->set_wrapper_width( 33 )
             ->set_display_format( $display_format )
@@ -134,7 +134,7 @@ class TreduEventsFields extends \Geniem\ACF\Field\Group {
             ->set_instructions( $strings['start_date']['instructions'] );
 
         $end_date_field = ( new Field\DatePicker( $strings['end_date']['title'] ) )
-            ->set_key( "${key}_end_date" )
+            ->set_key( "{$key}_end_date" )
             ->set_name( 'end_date' )
             ->set_wrapper_width( 33 )
             ->set_display_format( $display_format )
@@ -142,7 +142,7 @@ class TreduEventsFields extends \Geniem\ACF\Field\Group {
             ->set_instructions( $strings['end_date']['instructions'] );
 
         $page_size_field = ( new Field\Number( $strings['page_size']['label'] ) )
-            ->set_key( "${key}_page_size" )
+            ->set_key( "{$key}_page_size" )
             ->set_name( 'page_size' )
             ->set_min( 3 )
             ->set_max( 12 )
@@ -151,7 +151,7 @@ class TreduEventsFields extends \Geniem\ACF\Field\Group {
             ->set_instructions( $strings['page_size']['instructions'] );
 
         $show_images_field = ( new Field\TrueFalse( $strings['show_images']['label'] ) )
-            ->set_key( "${key}_show_images" )
+            ->set_key( "{$key}_show_images" )
             ->set_name( 'show_images' )
             ->use_ui()
             ->set_default_value( true )
@@ -159,7 +159,7 @@ class TreduEventsFields extends \Geniem\ACF\Field\Group {
             ->set_instructions( $strings['show_images']['instructions'] );
 
         $all_events_link_field = ( new Field\Link( $strings['all_events_link']['label'] ) )
-            ->set_key( "${key}_all_events_link" )
+            ->set_key( "{$key}_all_events_link" )
             ->set_name( 'all_events_link' )
             ->set_wrapper_width( 33 )
             ->set_instructions( $strings['all_events_link']['instructions'] );

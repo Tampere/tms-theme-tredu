@@ -6,7 +6,6 @@
 namespace TMS\Theme\Tredu\Formatters;
 
 use TMS\Theme\Tredu\Interfaces\Formatter;
-use TMS\Theme\Tredu\PostType\Page;
 use WP_Query;
 
 /**
@@ -25,12 +24,12 @@ class SubpagesFormatter implements Formatter {
      * Hooks
      */
     public function hooks() : void {
-        add_filter(
+        \add_filter(
             'tms/acf/layout/subpages/data',
             [ $this, 'format' ]
         );
 
-        add_filter(
+        \add_filter(
             'tms/acf/block/subpages/data',
             [ $this, 'format' ]
         );
@@ -61,9 +60,9 @@ class SubpagesFormatter implements Formatter {
      */
     private function get_subpages( array $data ) : array {
         $args = [
-            'post_type'              => Page::SLUG,
+            'post_type'              => \get_post_type(),
             'posts_per_page'         => 100,
-            'post_parent'            => get_the_ID(),
+            'post_parent'            => \get_the_ID(),
             'update_post_meta_cache' => false,
             'update_post_term_cache' => false,
             'no_found_rows'          => true,
@@ -82,8 +81,8 @@ class SubpagesFormatter implements Formatter {
 
         return array_map( function ( $post_id ) use ( $data ) {
             $item = [
-                'title' => get_the_title( $post_id ),
-                'url'   => get_the_permalink( $post_id ),
+                'title' => \get_the_title( $post_id ),
+                'url'   => \get_the_permalink( $post_id ),
             ];
 
             $item_classes = [];
@@ -93,9 +92,9 @@ class SubpagesFormatter implements Formatter {
             }
 
             if ( $data['display_image'] && has_post_thumbnail( $post_id ) ) {
-                $item_classes[] = 'has-background-image has-background-cover is-relative has-text-primary-invert';
-
-                $item['image_id'] = get_post_thumbnail_id( $post_id );
+                $item_classes[]       = 'has-background-image has-background-cover is-relative';
+                $item['image_id']     = \get_post_thumbnail_id( $post_id );
+                $item['icon_classes'] = 'is-black';
             }
             else {
                 if ( ! empty( $data['background_color'] ) ) {

@@ -1,23 +1,25 @@
-<div class="grid__item gallery gallery--gap0 gallery-columns-1 is-align-items-stretch grid__item--featured is-relative {classes}">
-    <div class="grid__item__image is-order-1 image is-square is-clipped">
+<div class="grid__item gallery gallery--gap0 gallery-columns-1 is-align-items-stretch grid__item--featured is-relative {classes|attr}">
+    <div class="is-relative">
         {?image.id}
-            {@image id=image.id size="large" class="objectfit-image" /}
+            <div class="grid__image is-absolute has-height-100 has-width-100">
+                {@image id=image.id size="large" class="objectfit-image" /}
+                <div class="overlay overlay--dark-40"></div>
+            </div>
         {/image.id}
-    </div>
+        <div class="is-flex is-flex-direction-column is-justify-content-flex-end has-height-100">
+            <div class="grid__item__details is-relative is-order-0 has-text-left pb-5 pb-7-tablet pr-4 pr-6-tablet pl-4 pl-6-tablet has-text-white">
+                {?title}
+                    <h3 class="h4 mb-0 has-text-white">{title|html}</h3>
+                {/title}
 
-    <div class="overlay overlay--dark-40"></div>
+                {?description}
+                    <p class="has-text-small has-text-white mt-3 mb-0 mt-5-tablet">{description|html}</p>
+                {/description}
 
-    <div class="grid__item__details is-order-0 has-text-left is-absolute has-bottom-0 pb-7 pr-6 pl-6 has-text-white">
-        {?title}
-            <h3 class="h4 mb-0 has-text-white">{title|html}</h3>
-        {/title}
-
-        {?description}
-            <p class="has-text-small has-text-white mt-3 mb-0 mt-5-tablet">{description|html}</p>
-        {/description}
-
-        {?link}
-            {>"ui/button-link" classes="is-secondary has-width-fit-content ml-0 mt-4 mt-5-tablet" icon="arrow-right" icon_classes="icon--medium is-primary-invert"  /}
-        {/link}
+                {?link}
+                    {>"ui/button-link" classes="is-secondary has-width-fit-content ml-0 mt-4 mt-5-tablet" icon="arrow-right" icon_classes="icon--medium is-primary-invert"  /}
+                {/link}
+            </div>
+        </div>
     </div>
 </div>

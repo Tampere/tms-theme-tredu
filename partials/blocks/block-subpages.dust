@@ -12,7 +12,21 @@
     {?subpages}
         <div class="subpages__items">
             {#subpages}
-                {>"ui/post-link" /}
+                {?image_id}
+                    <a href="{url|url}"
+                    class="post-link is-family-secondary pb-4 pl-4 pr-4 {classes|attr}" {?image_id}{@inlinebg id=image_id size="medium_large" /}{/image_id}>
+                        <div class="is-flex is-align-items-center has-background-secondary has-color-black has-width-100 pr-4 pl-4 pt-4 pb-4">
+                            {>"ui/icon" icon="arrow-right" class="icon--large is-relative mr-3 icon--medium {icon_classes|attr}" /}
+                            <h3 class="h6 m-0 is-relative">{title|html}</h3>
+                        </div>
+                    </a>
+                {:else}
+                    <a href="{url|url}"
+                    class="post-link is-family-secondary is-justify-content-start {classes|attr}">
+                        {>"ui/icon" icon="arrow-right" class="icon--large is-relative mr-3 icon--medium {icon_classes|attr}" /}
+                        <h3 class="h6 m-0 is-relative">{title|html}</h3>
+                    </a>
+                {/image_id}
             {/subpages}
         </div>
     {/subpages}

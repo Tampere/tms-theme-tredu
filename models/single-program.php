@@ -92,9 +92,9 @@ class SingleProgram extends BaseModel {
      * @return string|null
      */
     protected function get_delivery_method() : ?string {
-        $terms = get_the_terms( get_queried_object(), DeliveryMethod::SLUG );
+        $terms = \get_the_terms( \get_queried_object(), DeliveryMethod::SLUG );
 
-        if ( empty( $terms ) || is_wp_error( $terms ) ) {
+        if ( empty( $terms ) || \is_wp_error( $terms ) ) {
             return null;
         }
 
@@ -107,9 +107,9 @@ class SingleProgram extends BaseModel {
      * @return string|null
      */
     protected function get_educational_background() : ?string {
-        $terms = get_the_terms( get_queried_object(), EducationalBackground::SLUG );
+        $terms = \get_the_terms( \get_queried_object(), EducationalBackground::SLUG );
 
-        if ( empty( $terms ) || is_wp_error( $terms ) ) {
+        if ( empty( $terms ) || \is_wp_error( $terms ) ) {
             return null;
         }
 
@@ -122,9 +122,9 @@ class SingleProgram extends BaseModel {
      * @return string|null
      */
     protected function get_location() : ?string {
-        $terms = get_the_terms( get_queried_object(), Location::SLUG );
+        $terms = \get_the_terms( \get_queried_object(), Location::SLUG );
 
-        if ( empty( $terms ) || is_wp_error( $terms ) ) {
+        if ( empty( $terms ) || \is_wp_error( $terms ) ) {
             return null;
         }
 
@@ -193,7 +193,7 @@ class SingleProgram extends BaseModel {
      * @return array|object|WP_Post|null
      */
     protected function get_post() {
-        return Query::get_acf_post( get_queried_object_id() );
+        return Query::get_acf_post( \get_queried_object_id() );
     }
 
     /**
@@ -208,10 +208,10 @@ class SingleProgram extends BaseModel {
         ];
 
         $this_post     = $this->get_post();
-        $apply_methods = get_the_terms( $this_post, ApplyMethod::SLUG );
+        $apply_methods = \get_the_terms( $this_post, ApplyMethod::SLUG );
 
         if ( ! empty( $apply_methods[0]->term_id ) ) {
-            $apply_method_color = get_term_meta( $apply_methods[0]->term_id, 'color', true ) ?? '';
+            $apply_method_color = \get_term_meta( $apply_methods[0]->term_id, 'color', true ) ?? '';
 
             if ( ! empty( $apply_method_color ) ) {
                 $colors['bg']   = $apply_method_color;
@@ -273,7 +273,7 @@ class SingleProgram extends BaseModel {
 
         foreach ( $posts as $post ) {
 
-            $image_id = get_post_thumbnail_id( $post->ID ) ?? false;
+            $image_id = \get_post_thumbnail_id( $post->ID ) ?? false;
 
             if ( ! $image_id || $image_id < 1 ) {
                 $image_id = Images::get_default_image_id();
@@ -282,7 +282,7 @@ class SingleProgram extends BaseModel {
             $stories['posts'][] = [
                 'post_title'     => $post->post_title ?? '',
                 'featured_image' => $image_id,
-                'permalink'      => get_permalink( $post->ID ),
+                'permalink'      => \get_permalink( $post->ID ),
                 'post_date'      => $post->post_date ?? '',
                 'excerpt'        => $post->post_excerpt ?? '',
             ];

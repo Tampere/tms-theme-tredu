@@ -4,5 +4,5 @@
         {Strings.s.footer.back_to_top|s}
     </span>
 
-    {>"ui/icon" icon="arrow-down" class="icon--medium is-primary-invert has-rotate-180" /}
+    {>"ui/icon" icon="arrow-down" class="icon--medium has-rotate-180" /}
 </button>

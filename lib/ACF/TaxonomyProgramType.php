@@ -99,13 +99,13 @@ class TaxonomyProgramType {
             ->set_placement( 'left' );
 
         $hero_image_field = ( new Field\Image( $strings['hero_image']['title'] ) )
-            ->set_key( "${key}_hero_image" )
+            ->set_key( "{$key}_hero_image" )
             ->set_name( 'hero_image' )
             ->set_return_format( 'id' )
             ->set_instructions( $strings['hero_image']['instructions'] );
 
         $long_description_field = ( new Field\Wysiwyg( $strings['long_description']['title'] ) )
-            ->set_key( "${key}_long_description" )
+            ->set_key( "{$key}_long_description" )
             ->set_name( 'long_description' )
             ->set_tabs( 'visual' )
             ->set_toolbar( [ 'formatselect', 'bold', 'italic', 'link' ] )
@@ -113,17 +113,17 @@ class TaxonomyProgramType {
             ->set_instructions( $strings['long_description']['instructions'] );
 
         $scope_field = ( new Field\Text( $strings['scope']['title'] ) )
-            ->set_key( "${key}_scope" )
+            ->set_key( "{$key}_scope" )
             ->set_name( 'scope' )
             ->set_instructions( $strings['scope']['instructions'] );
 
         $who_can_apply_field = ( new Field\Text( $strings['who_can_apply']['title'] ) )
-            ->set_key( "${key}_who_can_apply" )
+            ->set_key( "{$key}_who_can_apply" )
             ->set_name( 'who_can_apply' )
             ->set_instructions( $strings['who_can_apply']['instructions'] );
 
         $show_cta_field = ( new Field\TrueFalse( $strings['show_cta']['title'] ) )
-            ->set_key( "${key}_show_cta" )
+            ->set_key( "{$key}_show_cta" )
             ->set_name( 'show_cta' )
             ->use_ui()
             ->set_instructions( $strings['show_cta']['instructions'] );

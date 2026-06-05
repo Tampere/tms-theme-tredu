@@ -149,13 +149,13 @@ class TreduEventGroup {
             $return_format  = $display_format;
 
             $excerpt_field = ( new Field\Textarea( $strings['excerpt']['title'] ) )
-                ->set_key( "${key}_excerpt" )
+                ->set_key( "{$key}_excerpt" )
                 ->set_name( 'excerpt' )
                 ->set_rows( 4 )
                 ->set_instructions( $strings['excerpt']['instructions'] );
 
             $start_date_field = ( new Field\DatePicker( $strings['start_date']['title'] ) )
-                ->set_key( "${key}_start_date" )
+                ->set_key( "{$key}_start_date" )
                 ->set_name( 'start_date' )
                 ->set_wrapper_width( 33 )
                 ->set_display_format( $display_format )
@@ -164,7 +164,7 @@ class TreduEventGroup {
                 ->set_instructions( $strings['start_date']['instructions'] );
 
             $end_date_field = ( new Field\DatePicker( $strings['end_date']['title'] ) )
-                ->set_key( "${key}_end_date" )
+                ->set_key( "{$key}_end_date" )
                 ->set_name( 'end_date' )
                 ->set_wrapper_width( 33 )
                 ->set_display_format( $display_format )
@@ -172,56 +172,56 @@ class TreduEventGroup {
                 ->set_instructions( $strings['end_date']['instructions'] );
 
             $time_field = ( new Field\Text( $strings['time']['title'] ) )
-                ->set_key( "${key}_time" )
+                ->set_key( "{$key}_time" )
                 ->set_name( 'time' )
                 ->set_maxlength( 20 )
                 ->set_wrapper_width( 33 )
                 ->set_instructions( $strings['time']['instructions'] );
 
             $location_field = ( new Field\Text( $strings['location']['title'] ) )
-                ->set_key( "${key}_location" )
+                ->set_key( "{$key}_location" )
                 ->set_name( 'location' )
                 ->set_wrapper_width( 33 )
                 ->set_instructions( $strings['location']['instructions'] );
 
             $enroll_link = ( new Field\Link( $strings['enroll_link']['title'] ) )
-                ->set_key( "${key}_enroll_link" )
+                ->set_key( "{$key}_enroll_link" )
                 ->set_name( 'enroll_link' )
                 ->set_wrapper_width( 33 )
                 ->set_instructions( $strings['enroll_link']['instructions'] );
 
             $contacts_repeater = ( new Field\Repeater( $strings['contacts']['title'] ) )
-                ->set_key( "${key}_contacts" )
+                ->set_key( "{$key}_contacts" )
                 ->set_name( 'contacts' )
                 ->set_layout( 'block' )
                 ->set_instructions( $strings['contacts']['instructions'] );
 
             $name_field = ( new Field\Text( $strings['contacts']['subfields']['name']['title'] ) )
-                ->set_key( "${key}_name" )
+                ->set_key( "{$key}_name" )
                 ->set_name( 'name' )
                 ->set_wrapper_width( 50 )
                 ->set_instructions( $strings['contacts']['subfields']['name']['instructions'] );
 
             $title_field = ( new Field\Text( $strings['contacts']['subfields']['title']['title'] ) )
-                ->set_key( "${key}_title" )
+                ->set_key( "{$key}_title" )
                 ->set_name( 'title' )
                 ->set_wrapper_width( 50 )
                 ->set_instructions( $strings['contacts']['subfields']['title']['instructions'] );
 
             $email_field = ( new Field\Text( $strings['contacts']['subfields']['email']['title'] ) )
-                ->set_key( "${key}_email" )
+                ->set_key( "{$key}_email" )
                 ->set_name( 'email' )
                 ->set_wrapper_width( 50 )
                 ->set_instructions( $strings['contacts']['subfields']['email']['instructions'] );
 
             $phone_field = ( new Field\Text( $strings['contacts']['subfields']['phone']['title'] ) )
-                ->set_key( "${key}_phone" )
+                ->set_key( "{$key}_phone" )
                 ->set_name( 'phone' )
                 ->set_wrapper_width( 50 )
                 ->set_instructions( $strings['contacts']['subfields']['phone']['instructions'] );
 
             $info_field = ( new Field\Textarea( $strings['contacts']['subfields']['info']['title'] ) )
-                ->set_key( "${key}_info" )
+                ->set_key( "{$key}_info" )
                 ->set_name( 'info' )
                 ->set_rows( 4 )
                 ->set_instructions( $strings['contacts']['subfields']['info']['instructions'] );
@@ -276,7 +276,7 @@ class TreduEventGroup {
             ->set_placement( 'left' );
 
         $components_field = ( new Field\FlexibleContent( $strings['components']['title'] ) )
-            ->set_key( "${key}_components" )
+            ->set_key( "{$key}_components" )
             ->set_name( 'components' )
             ->set_instructions( $strings['components']['instructions'] );
 

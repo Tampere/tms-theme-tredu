@@ -1,0 +1,22 @@
+{#Favorites.posts}
+    <li class="pb-5">
+        <h3 class="mb-0 mt-5 is-size-4">{title|html}</h3>
+        <p class="is-block has-text-xsmall has-line-height-tight has-text-trout has-text-weight-medium mb-2">{program_types|html}</p>
+        {^start_info}
+            <p class="mb-3 mt-0">{start_date|html}</p>
+        {:else}
+            <p class="mb-3 mt-0">{start_info|html}</p>
+        {/start_info}
+        <div class="button-container">
+            <a href="{permalink|url}" class="button is-primary">{go_to_program_text|html}</a>
+            <button
+                data-program-id="{ID|attr}"
+                aria-pressed="false"
+                aria-label="{title|attr} - {remove_favorite_text|attr}"
+                class="button js-remove-favorite">
+                {remove_favorite_text|html}
+                {>"ui/icon" icon="remove" class="icon--large is-primary"  /}
+            </button>
+        </div>
+    </li>
+{/Favorites.posts}

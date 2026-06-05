@@ -71,17 +71,17 @@ class SearchSettingsTab extends Tab {
 
         try {
             $event_search_title = ( new Field\Text( $strings['events_search_title']['title'] ) )
-                ->set_key( "${key}_events_search_title" )
+                ->set_key( "{$key}_events_search_title" )
                 ->set_name( 'events_search_title' )
                 ->set_instructions( $strings['events_search_title']['instructions'] );
 
             $event_search_text = ( new Field\Text( $strings['events_search_text']['title'] ) )
-                ->set_key( "${key}_events_search_text" )
+                ->set_key( "{$key}_events_search_text" )
                 ->set_name( 'events_search_text' )
                 ->set_instructions( $strings['events_search_text']['instructions'] );
 
             $events_search_page_field = ( new Field\PostObject( $strings['events_search_page']['title'] ) )
-                ->set_key( "${key}_events_search_page" )
+                ->set_key( "{$key}_events_search_page" )
                 ->set_name( 'events_search_page' )
                 ->set_post_types( [ 'page' ] )
                 ->set_return_format( 'id' )

@@ -66,6 +66,8 @@ class ThemeSupports implements Interfaces\Controller {
         add_filter( 'tms/theme/settings/material_default_image', [ $this, 'get_material_default_image' ] );
 
         add_filter( 'tms/plugin-contact-importer/placeholder_image', [ $this, 'get_contact_default_image' ] );
+
+        \add_action( 'wp_head', [ $this, 'add_meta_tags' ] );
     }
 
     /**
@@ -151,10 +153,11 @@ class ThemeSupports implements Interfaces\Controller {
         $vars[] = PageProgram::FILTER_PROGRAM_TYPE_QUERY_VAR;
         $vars[] = PageProgram::FILTER_EDUCATIONAL_BACKGROUND_QUERY_VAR;
         $vars[] = PageProgram::FILTER_ONGOING_QUERY_VAR;
+        $vars[] = PageProgram::FILTER_APPLY_METHOD_QUERY_VAR;
 
         $vars[] = PageProject::PORTFOLIO_QUERY_VAR;
         $vars[] = PageProject::SEARCH_QUERY_VAR;
-        $vars[] = PageProject::ACTIVE_ONLY_QUERY_VAR;
+        $vars[] = PageProject::SHOW_ALL_PROJECTS_QUERY_VAR;
 
         return $vars;
     }
@@ -184,5 +187,20 @@ class ThemeSupports implements Interfaces\Controller {
      */
     public function get_contact_default_image() {
         return Settings::get_setting( 'contacts_default_image' );
+    }
+
+    /**
+     * Add meta tags
+     *
+     * @return void
+     */
+    public function add_meta_tags() : void {
+        global $post;
+
+        if ( ! $post || is_archive() || is_search() ) {
+            return;
+        }
+
+        printf( '<meta name="pageID" content="%s" />', $post->ID ); // phpcs:ignore
     }
 }

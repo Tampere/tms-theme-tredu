@@ -24,7 +24,7 @@
                     <button class="button button--icon is-secondary is-rounded is-outlined slick-prev slick-arrow"
                             type="button">
                         {>"ui/icon" icon="chevron-left" /}
-                        <span class="is-sr-only">{Strings.s.gallery.previous|html}</span>
+                        <span class="is-sr-only">{translations.previous|html}</span>
                     </button>
 
                     <div class="image-carousel__items image-carousel__items--primary"
@@ -50,7 +50,7 @@
                     <button class="button button--icon is-secondary is-outlined is-rounded slick-next slick-arrow"
                             type="button">
                         {>"ui/icon" icon="chevron-right" /}
-                        <span class="is-sr-only">{Strings.s.gallery.next|html}</span>
+                        <span class="is-sr-only">{translations.next|html}</span>
                     </button>
                 </div>
             </div>
@@ -63,7 +63,7 @@
 
             <button
                 class="button button--icon modal-close-button is-white is-outlined is-flex is-align-self-flex-end image-carousel__modal-control">
-                <span class="modal-close-button__text">{translations.clos|html}</span>
+                <span class="modal-close-button__text">{translations.close|html}</span>
                 {>"ui/icon" icon="close" class="icon--medium" /}
             </button>
             <div class="modal-content">

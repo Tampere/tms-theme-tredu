@@ -66,7 +66,7 @@ class PageSettingsTab extends Tab {
 
         try {
             $display_siblings = ( new Field\TrueFalse( $strings['enable_sibling_navigation']['title'] ) )
-                ->set_key( "${key}_enable_sibling_navigation" )
+                ->set_key( "{$key}_enable_sibling_navigation" )
                 ->set_name( 'enable_sibling_navigation' )
                 ->set_default_value( true )
                 ->use_ui()
@@ -74,7 +74,7 @@ class PageSettingsTab extends Tab {
                 ->set_instructions( $strings['enable_sibling_navigation']['instructions'] );
 
             $siblings_heading = ( new Field\Text( $strings['sibling_navigation_heading']['title'] ) )
-                ->set_key( "${key}_sibling_navigation_heading" )
+                ->set_key( "{$key}_sibling_navigation_heading" )
                 ->set_name( 'sibling_navigation_heading' )
                 ->set_wrapper_width( 50 )
                 ->set_default_value( '' )

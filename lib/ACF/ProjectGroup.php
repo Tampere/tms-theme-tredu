@@ -90,28 +90,60 @@ class ProjectGroup {
                 'title'        => 'Aktiivinen',
                 'instructions' => '',
             ],
+            'title_lang' => [
+                'title'        => 'Otsikon kieli',
+                'instructions' => 'Valitse projektin otsikossa käytetty kieli.',
+            ],
         ];
 
         $tab = ( new Field\Tab( $strings['tab'] ) )
             ->set_placement( 'left' );
 
         $ingress_field = ( new Field\Textarea( $strings['ingress']['title'] ) )
-            ->set_key( "${key}_ingress" )
+            ->set_key( "{$key}_ingress" )
             ->set_name( 'ingress' )
             ->set_instructions( $strings['ingress']['instructions'] );
 
         $updated_on_field = ( new Field\Text( $strings['updated_on']['title'] ) )
-            ->set_key( "${key}_updated_on" )
+            ->set_key( "{$key}_updated_on" )
             ->set_name( 'updated_on' )
             ->set_instructions( $strings['updated_on']['instructions'] );
 
         $is_active_field = ( new Field\TrueFalse( $strings['is_active']['title'] ) )
-            ->set_key( "${key}_is_active" )
+            ->set_key( "{$key}_is_active" )
             ->set_name( 'is_active' )
             ->use_ui()
-            ->set_instructions( $strings['is_active']['instructions'] );
+            ->set_instructions( $strings['is_active']['instructions'] )
+            ->redipress_add_queryable( 'is_active' );
+
+        $title_lang_field = ( new Field\Select( $strings['title_lang']['title'] ) )
+            ->set_key( "{$key}_title_lang" )
+            ->set_name( 'title_lang' )
+            ->set_choices( [
+                'fi' => 'Suomi',
+                'en' => 'Englanti',
+                'sv' => 'Ruotsi',
+                'de' => 'Saksa',
+                'fr' => 'Ranska',
+                'es' => 'Espanja',
+                'ar' => 'Arabia',
+                'fa' => 'Farsi',
+                'hi' => 'Hindi',
+                'bn' => 'Bengali',
+                'uk' => 'Ukraina',
+                'ru' => 'Venäjä',
+                'zh' => 'Kiina (mandariinikiina)',
+                'ku' => 'Kurdi',
+                'et' => 'Viro',
+                'so' => 'Somali',
+            ] )
+            ->set_default_value( null )
+            ->allow_null()
+            ->set_required()
+            ->set_instructions( $strings['title_lang']['instructions'] );
 
         $tab->add_fields( [
+            $title_lang_field,
             $ingress_field,
             $updated_on_field,
             $is_active_field,
@@ -153,22 +185,22 @@ class ProjectGroup {
             ->set_placement( 'left' );
 
         $title_field = ( new Field\Text( $strings['title']['title'] ) )
-            ->set_key( "${key}_logo_cloud_title" )
+            ->set_key( "{$key}_logo_cloud_title" )
             ->set_name( 'logo_cloud_title' )
             ->set_instructions( $strings['title']['instructions'] );
 
         $description_field = ( new Field\Text( $strings['description']['title'] ) )
-            ->set_key( "${key}_logo_cloud_description" )
+            ->set_key( "{$key}_logo_cloud_description" )
             ->set_name( 'logo_cloud_description' )
             ->set_instructions( $strings['description']['instructions'] );
 
         $logo_repeater_field = ( new Field\Repeater( $strings['logos']['title'] ) )
-            ->set_key( "${key}_logos" )
+            ->set_key( "{$key}_logos" )
             ->set_name( 'logos' )
             ->set_instructions( $strings['logos']['instructions'] );
 
         $logo_field = ( new Field\Image( $strings['logo']['title'] ) )
-            ->set_key( "${key}_logo" )
+            ->set_key( "{$key}_logo" )
             ->set_name( 'logo' )
             ->set_instructions( $strings['logo']['instructions'] );
 
@@ -216,23 +248,23 @@ class ProjectGroup {
             ->set_placement( 'left' );
 
         $section_title_field = ( new Field\Text( $strings['anchors_title']['title'] ) )
-            ->set_key( "${key}_anchors_title" )
+            ->set_key( "{$key}_anchors_title" )
             ->set_name( 'anchors_title' )
             ->set_default_value( 'Klikkaa suoraan sisältöön:' )
             ->set_instructions( $strings['anchors_title']['instructions'] );
 
         $anchor_repeater_field = ( new Field\Repeater( $strings['anchors']['title'] ) )
-            ->set_key( "${key}_anchors" )
+            ->set_key( "{$key}_anchors" )
             ->set_name( 'anchors' )
             ->set_instructions( $strings['anchors']['instructions'] );
 
         $anchor_title_field = ( new Field\Text( $strings['anchor_link_title']['title'] ) )
-            ->set_key( "${key}_anchor_link_title" )
+            ->set_key( "{$key}_anchor_link_title" )
             ->set_name( 'anchor_link_title' )
             ->set_instructions( $strings['anchor_link_title']['instructions'] );
 
         $anchor_link_field = ( new Field\Text( $strings['anchor_link']['title'] ) )
-            ->set_key( "${key}_anchor_link" )
+            ->set_key( "{$key}_anchor_link" )
             ->set_name( 'anchor_link' )
             ->set_instructions( $strings['anchor_link']['instructions'] );
 
@@ -300,12 +332,12 @@ class ProjectGroup {
             ->set_name( 'website' );
 
         $website_title_field = ( new Field\Text( $strings['group_title']['title'] ) )
-            ->set_key( "${key}_website_title" )
+            ->set_key( "{$key}_website_title" )
             ->set_name( 'website_title' )
             ->set_instructions( $strings['group_title']['instructions'] );
 
         $website_link_field = ( new Field\Link( $strings['website_link']['title'] ) )
-            ->set_key( "${key}_website_link" )
+            ->set_key( "{$key}_website_link" )
             ->set_name( 'website_link' )
             ->set_instructions( $strings['website_link']['instructions'] );
 
@@ -318,12 +350,12 @@ class ProjectGroup {
             ->set_name( 'duration' );
 
         $duration_title_field = ( new Field\Text( $strings['group_title']['title'] ) )
-            ->set_key( "${key}_duration_title" )
+            ->set_key( "{$key}_duration_title" )
             ->set_name( 'duration_title' )
             ->set_instructions( $strings['group_title']['instructions'] );
 
         $duration_field = ( new Field\Text( $strings['duration']['title'] ) )
-            ->set_key( "${key}_duration" )
+            ->set_key( "{$key}_duration" )
             ->set_name( 'duration' )
             ->set_instructions( $strings['duration']['instructions'] );
 
@@ -336,12 +368,12 @@ class ProjectGroup {
             ->set_name( 'portfolio' );
 
         $portfolio_title_field = ( new Field\Text( $strings['group_title']['title'] ) )
-            ->set_key( "${key}_portfolio_title" )
+            ->set_key( "{$key}_portfolio_title" )
             ->set_name( 'portfolio_title' )
             ->set_instructions( $strings['group_title']['instructions'] );
 
         $portfolio_text_field = ( new Field\Textarea( $strings['portfolio_text']['title'] ) )
-            ->set_key( "${key}_portfolio_text" )
+            ->set_key( "{$key}_portfolio_text" )
             ->set_name( 'portfolio_text' )
             ->set_rows( 3 )
             ->set_instructions( $strings['portfolio_text']['instructions'] );
@@ -352,12 +384,12 @@ class ProjectGroup {
         ] );
 
         $contacts_title_field = ( new Field\Text( $strings['group_title']['title'] ) )
-            ->set_key( "${key}_meta_contacts_title" )
+            ->set_key( "{$key}_meta_contacts_title" )
             ->set_name( 'meta_contacts_title' )
             ->set_instructions( $strings['group_title']['instructions'] );
 
         $contact_field = ( new Field\Textarea( $strings['contacts']['title'] ) )
-            ->set_key( "${key}_contacts" )
+            ->set_key( "{$key}_contacts" )
             ->set_name( 'contacts' )
             ->set_instructions( $strings['contacts']['instructions'] );
 
@@ -400,7 +432,7 @@ class ProjectGroup {
             ->set_placement( 'left' );
 
         $components_field = ( new Field\FlexibleContent( $strings['components']['title'] ) )
-            ->set_key( "${key}_components" )
+            ->set_key( "{$key}_components" )
             ->set_name( 'components' )
             ->set_instructions( $strings['components']['instructions'] );
 
@@ -457,14 +489,14 @@ class ProjectGroup {
             ->set_placement( 'left' );
 
         $title_field = ( new Field\Text( $strings['title']['title'] ) )
-            ->set_key( "${key}_related_title" )
+            ->set_key( "{$key}_related_title" )
             ->set_name( 'related_title' )
             ->set_default_value( $strings['title']['default_value'] )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['title']['instructions'] );
 
         $link_field = ( new Field\Link( $strings['link']['title'] ) )
-            ->set_key( "${key}_related_link" )
+            ->set_key( "{$key}_related_link" )
             ->set_name( 'related_link' )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['link']['instructions'] );

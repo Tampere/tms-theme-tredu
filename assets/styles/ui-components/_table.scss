@@ -2,10 +2,15 @@
  *  Copyright (c) 2021. Geniem Oy
  */
 
-$table-row-background-color-even: $color-light-blueishgray !default;
+$table-row-background-color-even: $color-light-gray !default;
 $table-row-background-color-odd: $white !default;
 $table-row-background-color-even-hover: darken($table-row-background-color-odd, 1) !default;
 $table-row-background-color-odd-hover: darken($table-row-background-color-even, 1) !default;
+
+.tablepress {
+    --even-bg-color: #{$table-row-background-color-even};
+    --odd-bg-color: #{$table-row-background-color-odd};
+}
 
 .tablepress {
     font-size: .9375rem;

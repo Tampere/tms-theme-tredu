@@ -2,20 +2,6 @@
     position: relative;
     overflow: hidden;
 
-    &::before {
-        @include from($desktop) {
-            content: "";
-            position: absolute;
-            top: -11rem;
-            right: -9rem;
-            width: 17.75rem;
-            height: 17.75rem;
-            background-image: url('../images/hero-stripes.svg');
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-    }
-
     &.has-background-primary {
         background-color: $primary;
         color: $color-white;
@@ -26,11 +12,11 @@
     }
 
     &.has-background-secondary {
-        background-color: $color-light-blueishgray !important;
-        color: $color-black;
+        background-color: $color-light-gray !important;
+        color: $text;
 
         .notice-banner__title {
-            color: $primary !important;
+            color: $text !important;
         }
     }
 

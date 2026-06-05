@@ -1,12 +1,43 @@
-<section class="section">
-    <div class="container">
-        <div class="columns">
-            <div class="column has-text-centered">
-                <h1 class="mt-0 mb-8">
-                    {page_title|s}
-                </h1>
+{?blog_category_image}
+    <section class="page__hero section has-text-centered is-relative pt-0 pb-0 has-background-cover" {@inlinebg id=blog_category_image size="fullhd" /}>
+        <div class="overlay overlay--dark-50"></div>
+        <div class="is-absolute has-top-50 has-right-0 has-left-0 has-transform-y--50 is-clipped">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-8 is-offset-2">
+                        {?page_title}
+                            <h1 class="mt-0 mb-8 has-text-white">
+                                {page_title|html}
+                            </h1>
+                        {/page_title}
+
+                        {?page_description}
+                            <div class="mb-0 has-text-white">
+                                {page_description|kses}
+                            </div>
+                        {/page_description}
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+{/blog_category_image}
+
+<section class="section">
+    <div class="container">
+        {^blog_category_image}
+            <div class="columns">
+                <div class="column has-text-centered">
+                    <h1 class="mt-0 mb-8">
+                        {page_title|html}
+                    </h1>
+
+                    {?page_description}
+                        {page_description|kses}
+                    {/page_description}
+                </div>
+            </div>
+        {/blog_category_image}
 
         {>"views/home/home-highlight" category_link_classes="is-primary-invert is-borderless" /}
 
@@ -20,7 +51,7 @@
             {:else}
                 <div class="column">
                     <div class="pt-6 pb-6 h4 has-text-centered">
-                        {Strings.s.home.no_results|s}
+                        {Strings.s.home.no_results|html}
                     </div>
                 </div>
             {/articles}

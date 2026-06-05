@@ -39,22 +39,24 @@ class Strings extends \DustPress\Model {
     public function s() : array {
         return [
             'header'             => [
-                'skip_to_content'          => _x( 'Skip to content', 'theme-frontend', 'tms-theme-tredu' ),
-                'main_navigation'          => _x( 'Main navigation', 'theme-frontend', 'tms-theme-tredu' ),
-                'open_menu'                => _x( 'Open menu', 'theme-frontend', 'tms-theme-tredu' ),
-                'close_menu'               => _x( 'Close menu', 'theme-frontend', 'tms-theme-tredu' ),
-                'language_navigation'      => _x( 'Language navigation', 'theme-frontend', 'tms-theme-tredu' ),
-                'open_search'              => _x( 'Open search form', 'theme-frontend', 'tms-theme-tredu' ),
-                'open_lang_nav'            => _x( 'Open language navigation', 'theme-frontend', 'tms-theme-tredu' ),
-                'current_lang'             => _x( 'Current language: ', 'theme-frontend', 'tms-theme-tredu' ),
-                'search'                   => _x( 'Search', 'theme-frontend', 'tms-theme-tredu' ),
-                'search_from_site'         => _x( 'Search from site', 'theme-frontend', 'tms-theme-tredu' ),
-                'search_title'             => _x( 'Search from site', 'theme-frontend', 'tms-theme-tredu' ),
-                'search_input_label'       => _x( 'Search from site', 'theme-frontend', 'tms-theme-tredu' ),
-                'search_input_placeholder' => _x( 'Search from site', 'theme-frontend', 'tms-theme-tredu' ),
-                'exception_close_button'   => _x( 'Close', 'theme-frontend', 'tms-theme-tredu' ),
-                'home'                     => _x( 'To home page', 'theme-frontend', 'tms-theme-tredu' ),
-                'breadcrumbs'              => _x( 'Breadcrumbs', 'theme-frontend', 'tms-theme-tredu' ),
+                'skip_to_content'           => _x( 'Skip to content', 'theme-frontend', 'tms-theme-tredu' ),
+                'main_navigation'           => _x( 'Main navigation', 'theme-frontend', 'tms-theme-tredu' ),
+                'frequently_searched_pages' => _x( 'Frequently searched pages', 'theme-frontend', 'tms-theme-tredu' ),
+                'open_menu'                 => _x( 'Open menu', 'theme-frontend', 'tms-theme-tredu' ),
+                'close_menu'                => _x( 'Close menu', 'theme-frontend', 'tms-theme-tredu' ),
+                'language_navigation'       => _x( 'Language navigation', 'theme-frontend', 'tms-theme-tredu' ),
+                'open_search'               => _x( 'Open search form', 'theme-frontend', 'tms-theme-tredu' ),
+                'open_lang_nav'             => _x( 'Open language navigation', 'theme-frontend', 'tms-theme-tredu' ),
+                'current_lang'              => _x( 'Current language: ', 'theme-frontend', 'tms-theme-tredu' ),
+                'search'                    => _x( 'Search', 'theme-frontend', 'tms-theme-tredu' ),
+                'search_from_site'          => _x( 'Search from site', 'theme-frontend', 'tms-theme-tredu' ),
+                'search_title'              => _x( 'Search from site', 'theme-frontend', 'tms-theme-tredu' ),
+                'search_input_label'        => _x( 'Search from site', 'theme-frontend', 'tms-theme-tredu' ),
+                'search_input_placeholder'  => _x( 'Search from site', 'theme-frontend', 'tms-theme-tredu' ),
+                'exception_close_button'    => _x( 'Close', 'theme-frontend', 'tms-theme-tredu' ),
+                'home'                      => _x( 'To home page', 'theme-frontend', 'tms-theme-tredu' ),
+                'breadcrumbs'               => _x( 'Breadcrumbs', 'theme-frontend', 'tms-theme-tredu' ),
+                'translate'                 => _x( 'Translate', 'theme-frontend', 'tms-theme-tredu' ),
             ],
             '404'                => [
                 'title'         => _x( 'Page not found', 'theme-frontend', 'tms-theme-tredu' ),
@@ -79,35 +81,40 @@ class Strings extends \DustPress\Model {
                 'share_to_social_media' => _x( 'Share to social media', 'theme-frontend', 'tms-theme-tredu' ),
             ],
             'gallery'            => [
-                'close'          => _x( 'Close', 'theme-frontend', 'tms-theme-tredu' ),
-                'next'           => _x( 'Next', 'theme-frontend', 'tms-theme-tredu' ),
-                'open'           => _x( 'Open', 'theme-frontend', 'tms-theme-tredu' ),
-                'previous'       => _x( 'Previous', 'theme-frontend', 'tms-theme-tredu' ),
-                'goto'           => _x( 'Go to slide', 'theme-frontend', 'tms-theme-tredu' ),
-                'centered'       => _x( 'Centered', 'theme-frontend', 'tms-theme-tredu' ),
-                'slide'          => _x( 'Slide', 'theme-frontend', 'tms-theme-tredu' ),
-                'image_carousel' => _x( 'Image carousel', 'theme-frontend', 'tms-theme-tredu' ),
-                'modal_carousel' => _x( 'Modal image carousel', 'theme-frontend', 'tms-theme-tredu' ),
-                'main_carousel'  => _x( 'Main image carousel', 'theme-frontend', 'tms-theme-tredu' ),
+                'close'           => _x( 'Close', 'theme-frontend', 'tms-theme-tredu' ),
+                'next'            => _x( 'Next', 'theme-frontend', 'tms-theme-tredu' ),
+                'open'            => _x( 'Open', 'theme-frontend', 'tms-theme-tredu' ),
+                'previous'        => _x( 'Previous', 'theme-frontend', 'tms-theme-tredu' ),
+                'goto'            => _x( 'Go to slide', 'theme-frontend', 'tms-theme-tredu' ),
+                'centered'        => _x( 'Centered', 'theme-frontend', 'tms-theme-tredu' ),
+                'slide'           => _x( 'Slide', 'theme-frontend', 'tms-theme-tredu' ),
+                'image_carousel'  => _x( 'Image carousel', 'theme-frontend', 'tms-theme-tredu' ),
+                'modal_carousel'  => _x( 'Modal image carousel', 'theme-frontend', 'tms-theme-tredu' ),
+                'browsing_images' => _x( 'Browsing images', 'theme-frontend', 'tms-theme-tredu' ),
+                'main_carousel'   => _x( 'Main image carousel', 'theme-frontend', 'tms-theme-tredu' ),
+                'expand'          => _x( 'Expand', 'theme-frontend', 'tms-theme-tredu' ),
             ],
             'footer'             => [
                 'to_main_site' => _x( 'Move to tampere.fi', 'theme-frontend', 'tms-theme-tredu' ),
                 'back_to_top'  => _x( 'Back to top', 'theme-frontend', 'tms-theme-tredu' ),
             ],
             'common'             => [
-                'target_blank' => _x( 'Opens in a new window', 'theme-frontend', 'tms-theme-tredu' ),
-                'all'          => _x( 'All', 'theme-frontend', 'tms-theme-tredu' ),
-                'read_more'    => _x( 'Read more', 'theme-frontend', 'tms-theme-tredu' ),
+                'target_blank'  => _x( 'Opens in a new window', 'theme-frontend', 'tms-theme-tredu' ),
+                'external_link' => _x( 'The link takes you to an external website', 'theme-frontend', 'tms-theme-tredu' ),
+                'all'           => _x( 'All', 'theme-frontend', 'tms-theme-tredu' ),
+                'read_more'     => _x( 'Read more', 'theme-frontend', 'tms-theme-tredu' ),
             ],
             'single'             => [
                 'image_credits'   => _x( 'Image:', 'theme-frontend', 'tms-theme-tredu' ),
                 'writing_credits' => _x( 'Text:', 'theme-frontend', 'tms-theme-tredu' ),
+                'article_type'    => _x( 'Articletype:', 'theme-frontend', 'tms-theme-tredu' ),
             ],
             'home'               => [
                 'month'              => _x( 'Month', 'theme-frontend', 'tms-theme-tredu' ),
                 'year'               => _x( 'Year', 'theme-frontend', 'tms-theme-tredu' ),
                 'no_results'         => _x( 'No results', 'theme-frontend', 'tms-theme-tredu' ),
                 'filter_by_category' => _x( 'Filter by Category', 'theme-frontend', 'tms-theme-tredu' ),
+                'description'        => _x( 'The page reloads after the selection.', 'theme-frontend', 'tms-theme-tredu' ),
             ],
             'months'             => [
                 'january'   => _x( 'January', 'theme-frontend', 'tms-theme-tredu' ),
@@ -168,11 +175,12 @@ class Strings extends \DustPress\Model {
                 'related_art'     => _x( 'Artwork by the same artist', 'theme-frontend', 'tms-theme-tredu' ),
                 'related_artwork' => _x( 'Related artwork', 'theme-frontend', 'tms-theme-tredu' ),
             ],
-            'program'    => [
+            'program' => [
                 'search'                  => [
                     'search_studies'                     => _x( 'Search studies', 'theme-frontend', 'tms-theme-tredu' ),
                     'results_shown'                      => _x( 'Results shown', 'theme-frontend', 'tms-theme-tredu' ),
                     'commit_new_search'                  => _x( 'Commit new search', 'theme-frontend', 'tms-theme-tredu' ),
+                    'clear_search_terms'                 => _x( 'Clear the search terms', 'theme-frontend', 'tms-theme-tredu' ),
                     'show_only_ongoing'                  => _x( 'Show only programs that can be applied now', 'theme-frontend', 'tms-theme-tredu' ),
                     'select'                             => _x( 'Select', 'theme-frontend', 'tms-theme-tredu' ),
                     'results'                            => _x( 'Results', 'theme-frontend', 'tms-theme-tredu' ),
@@ -183,6 +191,8 @@ class Strings extends \DustPress\Model {
                     'commits_new_search'                 => _x( 'Selecting filter commits new search', 'theme-frontend', 'tms-theme-tredu' ),
                     'write_term_profession_program_name' => _x( 'Write search term, profession or program name', 'theme-frontend', 'tms-theme-tredu' ),
                     'sr_autocomplete_instructions'       => _x( 'Write three or more letter to get results. When results are available, use up and down arrows to inspect and select. For touchscreen users, inspect by touching or swiping.', 'theme-frontend', 'tms-theme-tredu' ),
+                    'more_search_filters'                => _x( 'More search filters', 'theme-frontend', 'tms-theme-tredu' ),
+                    'choose_apply_method'                => _x( 'Choose apply method', 'theme-frontend', 'tms-theme-tredu' ),
                 ],
                 'profession'              => _x( 'Profession', 'theme-frontend', 'tms-theme-tredu' ),
                 'program-type'            => _x( 'Program type', 'theme-frontend', 'tms-theme-tredu' ),
@@ -191,15 +201,26 @@ class Strings extends \DustPress\Model {
                 'delivery-method'         => _x( 'Delivery method', 'theme-frontend', 'tms-theme-tredu' ),
                 'application-period-ends' => _x( 'Application period ends', 'theme-frontend', 'tms-theme-tredu' ),
                 'start-date'              => _x( 'Starts', 'theme-frontend', 'tms-theme-tredu' ),
+                'print'                   => _x( 'Print page', 'theme-frontend', 'tms-theme-tredu' ),
             ],
             'program_type' => [
                 'scope'         => _x( 'Scope', 'theme-frontend', 'tms-theme-tredu' ),
                 'who_can_apply' => _x( 'Who can apply?', 'theme-frontend', 'tms-theme-tredu' ),
             ],
+            'program_favorite' => [
+                'favorites_title'              => _x( 'Favorites', 'theme-frontend', 'tms-theme-tredu' ),
+                'no_favorites_text'            => _x( 'No favorites found', 'theme-frontend', 'tms-theme-tredu' ),
+                'open_or_close_favorites_text' => _x( 'Open or close favorites', 'theme-frontend', 'tms-theme-tredu' ),
+                'close_favorites_text'         => _x( 'Close favorites', 'theme-frontend', 'tms-theme-tredu' ),
+                'add_to_favorites_aria_label'  => _x( 'Add or remove from favorites', 'theme-frontend', 'tms-theme-tredu' ),
+                'add_to_favorites_text'        => _x( 'Add to favorites', 'theme-frontend', 'tms-theme-tredu' ),
+                'remove_from_favorites_text'   => _x( 'Remove from favorites', 'theme-frontend', 'tms-theme-tredu' ),
+            ],
             'search'             => [
                 'filter_by_post_type' => _x( 'Filter by type', 'theme-frontend', 'tms-theme-tredu' ),
                 'filter_by_date'      => _x( 'Publish date', 'theme-frontend', 'tms-theme-tredu' ),
                 'write_search_terms'  => _x( 'Write search terms', 'theme-frontend', 'tms-theme-tredu' ),
+                'breadcrumbs'         => _x( 'Page location:', 'theme-frontend', 'tms-theme-tredu' ),
             ],
             'page_materials'     => [
                 'filter'        => _x( 'Filter', 'theme-frontend', 'tms-theme-tredu' ),
@@ -254,9 +275,14 @@ class Strings extends \DustPress\Model {
                     _x( 'Dec', 'theme-frontend', 'tms-theme-tredu' ),
                 ],
             ],
-            'modaal'     => [
-                'accessible_title' => _x( 'Dialog Window - Close (Press escape to close)', 'theme-frontend', 'tms-theme-tredu' ),
-                'close'            => _x( 'Close (Press escape to close)', 'theme-frontend', 'tms-theme-tredu' ),
+            'modaal' => [
+                'accessible_title' => _x( 'Enlarged image', 'theme-frontend', 'tms-theme-tredu' ),
+                'close'            => _x( 'Close', 'theme-frontend', 'tms-theme-tredu' ),
+            ],
+            'load_more' => [
+                'load_more_text'          => _x( 'Load more', 'theme-frontend', 'tms-theme-tredu' ),
+                'load_more_programs_text' => _x( 'Load more programs', 'theme-frontend', 'tms-theme-tredu' ),
+                'load_more_loaded'        => _x( 'More results loaded', 'theme-frontend', 'tms-theme-tredu' ),
             ],
         ];
     }
@@ -269,7 +295,7 @@ class Strings extends \DustPress\Model {
      * @return object
      */
     public function add_pagination_translations( $data ) {
-        $data->S->aria_label = __( 'Pagination', 'tms-theme-tredu' );
+        $data->S->aria_label = __( 'Pagination', 'tms-theme-tredu' ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 
         return $data;
     }

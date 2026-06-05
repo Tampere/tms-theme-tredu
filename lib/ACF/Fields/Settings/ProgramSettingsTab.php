@@ -11,6 +11,7 @@ use Geniem\ACF\Field\Tab;
 use Geniem\ACF\Group;
 use TMS\Theme\Tredu\Logger;
 use TMS\Theme\Tredu\PostType;
+use TMS\Theme\Tredu\Taxonomy\ApplyMethod;
 
 /**
  * Class ProgramSettingsTab
@@ -58,6 +59,10 @@ class ProgramSettingsTab extends Tab {
         'cta_link'              => [
             'title'        => 'Linkki',
             'instructions' => '',
+        ],
+        'apply_method_radios'   => [
+            'title'        => 'Hakutavat valintapainikkeisiin',
+            'instructions' => 'Valitse tästä halutut hakutavat koulutushaun radio-painike suodattimeen.',
         ],
     ];
 
@@ -124,7 +129,7 @@ class ProgramSettingsTab extends Tab {
                 ->set_instructions( $strings['cta_link']['instructions'] );
 
             $program_cta_group = ( new Field\Group( $strings['program_cta_group']['title'] ) )
-                ->set_key( "${key}_program_call_to_action" )
+                ->set_key( "{$key}_program_call_to_action" )
                 ->set_name( 'program_call_to_action' );
 
             $program_cta_group->add_fields( [
@@ -134,8 +139,15 @@ class ProgramSettingsTab extends Tab {
             ] );
 
             $program_search_group = ( new Field\Group( $strings['program_search_group']['title'] ) )
-                ->set_key( "${key}_program_search" )
+                ->set_key( "{$key}_program_search" )
                 ->set_name( 'program_search' );
+
+            $apply_method_radios = ( new Field\Taxonomy( $strings['apply_method_radios']['title'] ) )
+                ->set_key( "{$key}_program_apply_methods" )
+                ->set_name( 'program_apply_methods' )
+                ->set_taxonomy( ApplyMethod::SLUG )
+                ->allow_null( true )
+                ->set_instructions( $strings['apply_method_radios']['instructions'] );
 
             $program_search_group->add_fields( [
                 $program_page,
@@ -145,6 +157,7 @@ class ProgramSettingsTab extends Tab {
             $this->add_fields( [
                 $program_search_group,
                 $program_cta_group,
+                $apply_method_radios,
             ] );
         }
         catch ( Exception $e ) {

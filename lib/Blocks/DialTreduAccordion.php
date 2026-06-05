@@ -30,16 +30,21 @@ class DialTreduAccordion extends BaseBlock {
     const KEY = 'dial-tredu-accordion';
 
     /**
-     * The block icon
+     * The block icon.
      *
      * @var string
      */
     protected $icon = 'format-status';
 
     /**
-     * Create the layout
+     * The block title.
      *
-     * @param string $key Key from the flexible content.
+     * @var string
+     */
+    protected string $title;
+
+    /**
+     * Create the layout.
      */
     public function __construct() {
         $this->title = 'Dial Tredu Haitari';

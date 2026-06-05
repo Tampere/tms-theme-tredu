@@ -26,7 +26,7 @@
                     <div class="column is-12">
                         <article class="entry">
                             {>"ui/entry-title" class="mt-0 has-text-centered" hero_image=Page.hero_image /}
-                            <div class="entry__content is-content-grid keep-vertical-spacing">
+                            <div class="entry__content">
                                 {@content /}
                             </div>
                         </article>

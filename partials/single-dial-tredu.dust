@@ -5,6 +5,14 @@
         <main class="main-content" id="main-content">
             <section class="section pt-10">
                 <div class="container">
+
+                    {#go_back_link}
+                        <a href="{permalink|url}" class="is-inline-block mb-5">
+                            {>"ui/icon" class="icon--medium ml-2 mr-0" /}
+                            {text|html}
+                        </a>
+                    {/go_back_link}
+
                     <div class="columns is-multiline">
                         <article class="entry column is-12">
                             <div class="entry__content is-content-grid keep-vertical-spacing">

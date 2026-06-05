@@ -83,7 +83,7 @@ class PageDialTreduGroup {
             ->set_placement( 'left' );
 
         $ingress_field = ( new Field\Textarea( $strings['ingress']['title'] ) )
-            ->set_key( "${key}_ingress" )
+            ->set_key( "{$key}_ingress" )
             ->set_name( 'ingress' )
             ->set_maxlength( 600 )
             ->set_instructions( $strings['ingress']['instructions'] );

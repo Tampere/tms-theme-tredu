@@ -52,7 +52,7 @@ class Program implements PostType {
      * Constructor
      */
     public function __construct() {
-        $this->description = _x( 'program', 'theme CPT', 'tms-theme-tredu' );
+        $this->description = \_x( 'program', 'theme CPT', 'tms-theme-tredu' );
     }
 
     /**
@@ -61,7 +61,7 @@ class Program implements PostType {
      * @return void
      */
     public function hooks() : void {
-        add_action( 'init', \Closure::fromCallable( [ $this, 'register' ] ), 15 );
+        \add_action( 'init', \Closure::fromCallable( [ $this, 'register' ] ), 15 );
     }
 
     /**
@@ -139,7 +139,7 @@ class Program implements PostType {
             'show_in_rest'        => true,
         ];
 
-        register_post_type( static::SLUG, $args );
+        \register_post_type( static::SLUG, $args );
     }
 
     /**
@@ -153,15 +153,15 @@ class Program implements PostType {
     public static function format_posts( array $posts, array $taxonomies ) : array {
 
         return array_map( function ( $item ) use ( $taxonomies ) {
-            if ( has_post_thumbnail( $item->ID ) ) {
-                $item->image = get_post_thumbnail_id( $item->ID );
+            if ( \has_post_thumbnail( $item->ID ) ) {
+                $item->image = \get_post_thumbnail_id( $item->ID );
             }
             else {
                 $item->image = Images::get_default_image_id();
             }
 
-            $item->permalink = get_the_permalink( $item->ID );
-            $item->fields    = get_fields( $item->ID );
+            $item->permalink = \get_the_permalink( $item->ID );
+            $item->fields    = \get_fields( $item->ID );
 
             if ( ! empty( $item->fields ) ) {
 
@@ -179,16 +179,16 @@ class Program implements PostType {
 
             foreach ( $taxonomies as $tax_slug ) {
 
-                $primary_term_id = get_post_meta( $item->ID, '_primary_term_' . $tax_slug, true );
+                $primary_term_id = \get_post_meta( $item->ID, '_primary_term_' . $tax_slug, true );
+                $terms           = \wp_get_post_terms( $item->ID, $tax_slug );
 
                 $term_id = 0;
                 if ( ! empty( $primary_term_id ) ) {
-                    $primary_term      = get_term( $primary_term_id );
+                    $primary_term      = \get_term( $primary_term_id );
                     $item->{$tax_slug} = $primary_term->name;
                     $term_id           = $primary_term_id;
                 }
                 else {
-                    $terms = wp_get_post_terms( $item->ID, $tax_slug );
                     if ( ! empty( $terms ) ) {
                         $item->{$tax_slug} = $terms[0]->name;
                         $term_id           = $terms[0]->term_id;
@@ -196,9 +196,24 @@ class Program implements PostType {
                 }
 
                 if ( $tax_slug === ApplyMethod::SLUG ) {
-                    $apply_method_color           = get_term_meta( $term_id, 'color', true ) ?? '';
-                    $item->apply_method_color     = $apply_method_color;
-                    $item->apply_method_txt_color = $apply_method_color === 'primary' ? 'white' : 'primary';
+                    foreach ( $terms as $key => $term ) {
+                        $apply_method_color = \get_term_meta( $term->term_id, 'color', true ) ?? '';
+
+                        // Replace specific colors to new ones.
+                        if ( $apply_method_color === 'green' ) {
+                            $apply_method_color = 'spruce-green';
+                        }
+                        elseif ( $apply_method_color === 'red' ) {
+                            $apply_method_color = 'fuchsia';
+                        }
+                        elseif ( $apply_method_color === 'blue' ) {
+                            $apply_method_color = 'secondary';
+                        }
+
+                        $item->fields['apply_method'][ $key ]['apply_method_color']     = $apply_method_color;
+                        $item->fields['apply_method'][ $key ]['apply_method_txt_color'] = in_array( $apply_method_color, [ 'fuchsia', 'spruce-green', 'primary' ], true ) ? 'white' : 'black';
+                        $item->fields['apply_method'][ $key ]['apply_method_name']      = $term->name;
+                    }
                 }
             }
 

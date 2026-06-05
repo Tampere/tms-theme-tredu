@@ -66,7 +66,7 @@ class ArchiveSettingsTab extends Tab {
 
         try {
             $use_images_field = ( new Field\TrueFalse( $strings['archive_use_images']['title'] ) )
-                ->set_key( "${key}_archive_use_images" )
+                ->set_key( "{$key}_archive_use_images" )
                 ->set_name( 'archive_use_images' )
                 ->set_default_value( true )
                 ->use_ui()
@@ -74,7 +74,7 @@ class ArchiveSettingsTab extends Tab {
                 ->set_instructions( $strings['archive_use_images']['instructions'] );
 
             $view_type_field = ( new Field\Radio( $strings['archive_view_type']['title'] ) )
-                ->set_key( "${key}_archive_view_type" )
+                ->set_key( "{$key}_archive_view_type" )
                 ->set_name( 'archive_view_type' )
                 ->set_choices( [
                     'grid' => 'Ruudukko',

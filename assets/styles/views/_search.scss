@@ -23,7 +23,7 @@ $search-item-hover: $primary-dark !default;
     }
 
     &__events-column {
-        background-color: $color-light-blueishgray;
+        background-color: $color-light-gray;
     }
 }
 
@@ -57,9 +57,18 @@ $search-item-hover: $primary-dark !default;
     background-color: $color-light-gray;
 
     &__inner {
+        display: flex;
+        flex-direction: column;
+
         @include from($desktop) {
             margin-right: 8.06rem;
         }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     &__meta-item,
@@ -112,7 +121,7 @@ $search-item-hover: $primary-dark !default;
                 }
 
                 span {
-                    margin-left: .25rem !important; // sass-lint:disable-line no-important
+                    margin-left: .25rem;
                 }
             }
         }

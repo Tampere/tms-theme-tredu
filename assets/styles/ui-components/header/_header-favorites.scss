@@ -1,0 +1,45 @@
+#js-favorites-open {
+    flex: 1 0 auto;
+    width: 2.375rem;
+    height: 2.375rem;
+
+    svg {
+        margin: 0 !important;
+    }
+
+    @include from($tablet) {
+        width: rem(50px);
+        height: rem(50px);
+    }
+}
+
+#js-favorites-container {
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            &:not(:last-of-type) {
+                border-bottom: 2px solid $primary;
+            }
+
+            .button-container {
+                display: flex;
+                gap: $theme-spacing-two;
+
+                .button.js-remove-favorite {
+                    padding: 0;
+                    background-color: transparent;
+                    border-color: transparent;
+
+                    svg.icon {
+                        margin-left: .25rem !important;
+                        margin-right: 0 !important;
+                        height: 1.25rem;
+                        width: 1.25rem;
+                    }
+                }
+            }
+        }
+    }
+}

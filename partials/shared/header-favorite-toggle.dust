@@ -1,0 +1,7 @@
+<button id="js-favorites-open"
+    class="is-rounded button js-toggle is-outlined p-0 ml-2"
+    aria-controls="js-favorites-container"
+    aria-expanded="false"
+    aria-label="{Strings.s.program_favorite.open_or_close_favorites_text|attr}">
+    {>"ui/icon" icon="icon-sydan" class="icon--large is-primary m-0"  /}
+</button>

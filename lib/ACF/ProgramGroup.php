@@ -43,7 +43,7 @@ class ProgramGroup {
                 ->set_position( 'normal' );
 
             $field_group->add_fields(
-                apply_filters(
+                \apply_filters(
                     'tms/acf/group/' . $field_group->get_key() . '/fields',
                     [
                         $this->get_general_tab( $field_group->get_key() ),
@@ -54,7 +54,7 @@ class ProgramGroup {
                 )
             );
 
-            $field_group = apply_filters(
+            $field_group = \apply_filters(
                 'tms/acf/group/' . $field_group->get_key(),
                 $field_group
             );
@@ -87,7 +87,7 @@ class ProgramGroup {
             ],
             'search_keywords'    => [
                 'title'        => 'Haun apusanat',
-                'instructions' => 'Käytetään ennakoivassa haussa',
+                'instructions' => 'Lisää tähän hakusanoja, joilla tämän koulutuksen halutaan löytyvän haussa',
             ],
             'search_box_title'   => [
                 'title'        => 'Hakulaatikon otsikko',
@@ -111,40 +111,42 @@ class ProgramGroup {
             ->set_placement( 'left' );
 
         $program_name_field = ( new Field\Text( $strings['program_name']['title'] ) )
-            ->set_key( "${key}_program_name" )
+            ->set_key( "{$key}_program_name" )
             ->set_name( 'program_name' )
+            ->redipress_include_search()
             ->set_instructions( $strings['program_name']['instructions'] );
 
         $ingress_field = ( new Field\Textarea( $strings['ingress']['title'] ) )
-            ->set_key( "${key}_ingress" )
+            ->set_key( "{$key}_ingress" )
             ->set_name( 'ingress' )
+            ->redipress_include_search()
             ->set_instructions( $strings['ingress']['instructions'] );
 
         $search_keywords_field = ( new Field\Textarea( $strings['search_keywords']['title'] ) )
-            ->set_key( "${key}_search_keywords" )
+            ->set_key( "{$key}_search_keywords" )
             ->set_name( 'search_keywords' )
             ->redipress_include_search()
             ->set_instructions( $strings['search_keywords']['instructions'] );
 
         $hide_apply_info_field = ( new Field\TrueFalse( $strings['hide_apply_info']['title'] ) )
-            ->set_key( "${key}_hide_apply_info" )
+            ->set_key( "{$key}_hide_apply_info" )
             ->set_name( 'hide_apply_info' )
             ->use_ui()
             ->set_instructions( $strings['hide_apply_info']['instructions'] );
 
         $search_box_title = ( new Field\Text( $strings['search_box_title']['title'] ) )
-            ->set_key( "${key}_search_box_title" )
+            ->set_key( "{$key}_search_box_title" )
             ->set_name( 'search_box_title' )
             ->set_instructions( $strings['search_box_title']['instructions'] );
 
         $search_box_ingress = ( new Field\Textarea( $strings['search_box_ingress']['title'] ) )
-            ->set_key( "${key}_search_box_ingress" )
+            ->set_key( "{$key}_search_box_ingress" )
             ->set_name( 'search_box_ingress' )
             ->set_maxlength( 200 )
             ->set_instructions( $strings['search_box_ingress']['instructions'] );
 
         $search_box_link = ( new Field\Link( $strings['search_box_link']['title'] ) )
-            ->set_key( "${key}_search_box_link" )
+            ->set_key( "{$key}_search_box_link" )
             ->set_name( 'search_box_link' )
             ->set_wrapper_width( 40 )
             ->set_instructions( $strings['search_box_link']['instructions'] );
@@ -217,28 +219,30 @@ class ProgramGroup {
             ->set_placement( 'left' );
 
         $apply_start_field = ( new Field\DatePicker( $strings['apply_start']['title'] ) )
-            ->set_key( "${key}_apply_start" )
+            ->set_key( "{$key}_apply_start" )
             ->set_name( 'apply_start' )
             ->set_return_format( 'Y-m-d' )
             ->set_wrapper_width( 50 )
-            ->set_instructions( $strings['apply_start']['instructions'] );
+            ->set_instructions( $strings['apply_start']['instructions'] )
+            ->redipress_add_queryable();
 
         $apply_end_field = ( new Field\DatePicker( $strings['apply_end']['title'] ) )
-            ->set_key( "${key}_apply_end" )
+            ->set_key( "{$key}_apply_end" )
             ->set_name( 'apply_end' )
             ->set_return_format( 'Y-m-d' )
             ->set_wrapper_width( 50 )
-            ->set_instructions( $strings['apply_end']['instructions'] );
+            ->set_instructions( $strings['apply_end']['instructions'] )
+            ->redipress_add_queryable();
 
         $apply_info_field = ( new Field\Text( $strings['apply_info']['title'] ) )
-            ->set_key( "${key}_apply_info" )
+            ->set_key( "{$key}_apply_info" )
             ->set_name( 'apply_info' )
             ->set_maxlength( 80 )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['apply_info']['instructions'] );
 
         $show_audience = ( new Field\TrueFalse( $strings['show_audience']['title'] ) )
-            ->set_key( "${key}_show_audience" )
+            ->set_key( "{$key}_show_audience" )
             ->set_name( 'show_audience' )
             ->set_default_value( true )
             ->set_wrapper_width( 50 )
@@ -248,28 +252,28 @@ class ProgramGroup {
             ->set_instructions( $strings['show_audience']['instructions'] );
 
         $start_date_field = ( new Field\DatePicker( $strings['start_date']['title'] ) )
-            ->set_key( "${key}_start_date" )
+            ->set_key( "{$key}_start_date" )
             ->set_name( 'start_date' )
             ->set_return_format( 'd.m.Y' )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['start_date']['instructions'] );
 
         $start_info_field = ( new Field\Text( $strings['start_info']['title'] ) )
-            ->set_key( "${key}_start_info" )
+            ->set_key( "{$key}_start_info" )
             ->set_name( 'start_info' )
             ->set_wrapper_width( 50 )
             ->set_maxlength( 80 )
             ->set_instructions( $strings['start_info']['instructions'] );
 
         $price_field = ( new Field\Text( $strings['price']['title'] ) )
-            ->set_key( "${key}_price" )
+            ->set_key( "{$key}_price" )
             ->set_name( 'price' )
             ->set_wrapper_width( 50 )
             ->set_maxlength( 160 )
             ->set_instructions( $strings['price']['instructions'] );
 
         $additional_information_field = ( new Field\Text( $strings['additional_information']['title'] ) )
-            ->set_key( "${key}_additional_information" )
+            ->set_key( "{$key}_additional_information" )
             ->set_name( 'additional_information' )
             ->set_wrapper_width( 50 )
             ->set_maxlength( 80 )
@@ -310,7 +314,7 @@ class ProgramGroup {
             ->set_placement( 'left' );
 
         $components_field = ( new Field\FlexibleContent( $strings['components']['title'] ) )
-            ->set_key( "${key}_components" )
+            ->set_key( "{$key}_components" )
             ->set_name( 'components' )
             ->set_instructions( $strings['components']['instructions'] );
 
@@ -323,6 +327,8 @@ class ProgramGroup {
                 Layouts\TextBlockLayout::class,
                 Layouts\CallToActionLayout::class,
                 Layouts\GravityFormLayout::class,
+                Layouts\LogoWallLayout::class,
+                Layouts\ImageCarouselLayout::class,
             ],
             $key
         );
@@ -366,7 +372,7 @@ class ProgramGroup {
             ->set_placement( 'left' );
 
         $category_field = ( new Field\Taxonomy( $strings['category']['label'] ) )
-            ->set_key( "${key}_category" )
+            ->set_key( "{$key}_category" )
             ->set_name( 'category' )
             ->set_taxonomy( Category::SLUG )
             ->set_return_format( 'id' )
@@ -374,7 +380,7 @@ class ProgramGroup {
             ->set_instructions( $strings['category']['instructions'] );
 
         $amount_field = ( new Field\Number( $strings['stories_amount']['label'] ) )
-            ->set_key( "${key}_stories_amount" )
+            ->set_key( "{$key}_stories_amount" )
             ->set_name( 'stories_amount' )
             ->set_min( 1 )
             ->set_max( 8 )
@@ -383,7 +389,7 @@ class ProgramGroup {
             ->set_instructions( $strings['stories_amount']['instructions'] );
 
         $link_field = ( new Field\Link( $strings['link']['label'] ) )
-            ->set_key( "${key}_link" )
+            ->set_key( "{$key}_link" )
             ->set_name( 'link' )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['link']['instructions'] );

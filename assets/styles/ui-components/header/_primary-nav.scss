@@ -12,6 +12,7 @@ $navbar-item-dropdown-accent-color: $primary !default;
     font-family: $family-secondary;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 
     .navbar-item {
         padding: $theme-spacing-three-quarters 0;
@@ -81,12 +82,18 @@ $navbar-item-dropdown-accent-color: $primary !default;
     }
 
     &--dropdown {
+        .navbar-link.dropdown-trigger {
+            padding-right: .75rem !important; // sass-lint:disable-line no-important
+        }
+
         .has-dropdown {
             position: static;
         }
 
         .dropdown-toggler {
             margin-right: 0 !important; // sass-lint:disable-line no-important
+            padding: .625rem;
+
             &:focus {
                 text-decoration: underline;
                 outline: .125rem solid $color-black;
@@ -116,6 +123,8 @@ $navbar-item-dropdown-accent-color: $primary !default;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             grid-column-gap: $gap;
             text-transform: none;
+            list-style: none;
+            padding-left: 0;
 
             .navbar-item {
                 padding: 1.411rem 0;

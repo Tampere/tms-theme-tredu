@@ -8,17 +8,14 @@ $secondary-navbar-item-font-weight: 600 !default;
 
 .secondary-menu {
     font-size: .9em;
+    flex-wrap: wrap;
 
-    li {
-        &:not(:first-child) {
-            @include from($desktop) {
-                margin-left: .5rem;
-            }
+    @include from($desktop) {
+        gap: .5rem;
+    }
 
-            @include from($fullhd) {
-                margin-left: 1rem;
-            }
-        }
+    @include from($fullhd) {
+        gap: 1rem;
     }
 
     a {

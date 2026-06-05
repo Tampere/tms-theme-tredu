@@ -24,7 +24,7 @@ class ApplyMethodGroup {
      * CommentGroup constructor.
      */
     public function __construct() {
-        add_action(
+        \add_action(
             'init',
             \Closure::fromCallable( [ $this, 'register_fields' ] )
         );
@@ -46,7 +46,7 @@ class ApplyMethodGroup {
                 ->set_position( 'normal' );
 
             $field_group->add_fields(
-                apply_filters(
+                \apply_filters(
                     'tms/acf/group/' . $field_group->get_key() . '/fields',
                     [
                         $this->get_color_field( $field_group->get_key() ),
@@ -54,7 +54,7 @@ class ApplyMethodGroup {
                 )
             );
 
-            $field_group = apply_filters(
+            $field_group = \apply_filters(
                 'tms/acf/group/' . $field_group->get_key(),
                 $field_group
             );
@@ -84,13 +84,13 @@ class ApplyMethodGroup {
         ];
 
         $color_field = ( new Field\Select( $strings['color']['label'] ) )
-            ->set_key( "${key}_color" )
+            ->set_key( "{$key}_color" )
             ->set_name( 'color' )
             ->set_choices( [
                 'primary' => 'Tumman sininen',
                 'blue'    => 'Sininen',
-                'green'   => 'Vihreä',
-                'red'     => 'Punainen',
+                'green'   => 'Havunvihreä',
+                'red'     => 'Fuksia',
             ] )
             ->set_default_value( 'primary' )
             ->set_wrapper_width( 30 )

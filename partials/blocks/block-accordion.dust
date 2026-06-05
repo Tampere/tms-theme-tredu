@@ -13,6 +13,20 @@
     </header>
 
     {?sections}
+        <button class="accordion__open-all button is-size-6">
+            <span class="button__text">
+                {strings.expand_all|html}
+            </span>
+            {>"ui/icon" icon="chevron-down" class="icon--medium is-primary" /}
+        </button>
+
+        <button class="accordion__close-all button is-size-6 is-hidden">
+            <span class="button__text">
+                {strings.collapse_all|html}
+            </span>
+            {>"ui/icon" icon="chevron-up" class="icon--medium is-primary" /}
+        </button>
+
         <div class="accordion__inner bulmally-accordion mt-5">
             <ul class="accordion__list is-unstyled">
                 {#sections}
@@ -26,8 +40,14 @@
                                     {section_title|html}
                                 </span>
 
-                                <span class="accordion__title-icon is-flex ml-auto" aria-hidden="true">
-                                    {>"ui/icon" icon="chevron-down" class="icon--medium is-secondary" /}
+                                <span class="accordion__title-icon is-flex ml-auto pl-2">
+                                    {>"ui/icon" icon="chevron-down" class="icon--medium is-accent" /}
+                                    <span class="accordion__icon-text icon-text--open ml-2" aria-hidden="false">
+                                        {strings.expand|html}
+                                    </span>
+                                    <span class="accordion__icon-text icon-text--close ml-2" aria-hidden="true">
+                                        {strings.collapse|html}
+                                    </span>
                                 </span>
                             </button>
                         </h3>

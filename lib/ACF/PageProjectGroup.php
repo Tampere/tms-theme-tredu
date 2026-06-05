@@ -11,7 +11,7 @@ use Geniem\ACF\Group;
 use Geniem\ACF\RuleGroup;
 use Geniem\ACF\Field;
 use PageProject;
-use TMS\Theme\Tredu\ACF\Layouts\TreduEventsLayout;
+use TMS\Theme\Tredu\ACF\Layouts;
 use TMS\Theme\Tredu\Logger;
 use TMS\Theme\Tredu\Taxonomy\Portoflio;
 
@@ -63,19 +63,42 @@ class PageProjectGroup {
             ];
 
             $ingress_field = ( new Field\Textarea( $strings['ingress']['title'] ) )
-                ->set_key( "${key}_ingress" )
+                ->set_key( "{$key}_ingress" )
                 ->set_name( 'ingress' )
                 ->set_instructions( $strings['ingress']['instructions'] );
 
             $components_field = ( new Field\FlexibleContent( $strings['components']['title'] ) )
-                ->set_key( "${key}_components" )
+                ->set_key( "{$key}_components" )
                 ->set_name( 'components' )
                 ->set_instructions( $strings['components']['instructions'] );
 
             $component_layouts = apply_filters(
                 'tms/acf/field/' . $components_field->get_key() . '/layouts',
                 [
+                    Layouts\CallToActionLayout::class,
+                    Layouts\ImageBannerLayout::class,
+                    Layouts\GridLayout::class,
+                    // Layouts\ContentColumnsLayout::class,
+                    Layouts\LogoWallLayout::class,
+                    Layouts\IconLinksLayout::class,
+                    Layouts\MapLayout::class,
+                    Layouts\SocialMediaLayout::class,
+                    Layouts\ImageCarouselLayout::class,
+                    Layouts\SubpageLayout::class,
+                    Layouts\TextBlockLayout::class,
+                    Layouts\EventsLayout::class,
+                    Layouts\ArticlesLayout::class,
+                    // Layouts\BlogArticlesLayout::class,
+                    Layouts\SitemapLayout::class,
+                    Layouts\NoticeBannerLayout::class,
+                    Layouts\GravityFormLayout::class,
+                    Layouts\ContactsLayout::class,
+                    Layouts\AccessibilityIconLinksLayout::class,
+                    Layouts\CountdownLayout::class,
+                    Layouts\ShareLinksLayout::class,
+                    Layouts\ProgramLayout::class,
                     Layouts\TreduEventsLayout::class,
+                    Layouts\VideoLayout::class,
                 ],
                 $key
             );

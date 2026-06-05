@@ -97,7 +97,7 @@ form {
         }
 
         .gform_button_select_files {
-            @extend .is-secondary;
+            @extend .is-primary;
         }
 
         .gform_drop_area {
@@ -105,7 +105,7 @@ form {
             align-items: center;
             justify-content: space-between;
             border: .125rem dashed $secondary;
-            background-color: $color-white;
+            background-color: $color-light-gray !important;
 
             .gform_drop_instructions {
                 margin-bottom: 0;

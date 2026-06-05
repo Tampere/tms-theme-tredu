@@ -75,21 +75,21 @@ class HeroFields extends \Geniem\ACF\Field\Group {
         $key = $this->get_key();
 
         $image_field = ( new Field\Image( $strings['image']['label'] ) )
-            ->set_key( "${key}_image" )
+            ->set_key( "{$key}_image" )
             ->set_name( 'image' )
             ->set_return_format( 'id' )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['image']['instructions'] );
 
         $title_field = ( new Field\Text( $strings['title']['label'] ) )
-            ->set_key( "${key}_title" )
+            ->set_key( "{$key}_title" )
             ->set_name( 'title' )
             ->set_maxlength( 90 )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['title']['instructions'] );
 
         $description_field = ( new Field\Textarea( $strings['description']['label'] ) )
-            ->set_key( "${key}_description" )
+            ->set_key( "{$key}_description" )
             ->set_name( 'description' )
             ->set_maxlength( 200 )
             ->set_rows( 4 )
@@ -98,13 +98,13 @@ class HeroFields extends \Geniem\ACF\Field\Group {
             ->set_instructions( $strings['description']['instructions'] );
 
         $link_field = ( new Field\Link( $strings['link']['label'] ) )
-            ->set_key( "${key}_link" )
+            ->set_key( "{$key}_link" )
             ->set_name( 'link' )
             ->set_wrapper_width( 40 )
             ->set_instructions( $strings['link']['instructions'] );
 
         $rows_field = ( new Field\Repeater( $strings['links']['label'] ) )
-            ->set_key( "${key}_rows" )
+            ->set_key( "{$key}_rows" )
             ->set_name( 'rows' )
             ->set_min( 0 )
             ->set_max( 4 )

@@ -95,19 +95,20 @@ $button-transition-speed: $speed !default;
                 border-color: $color-blue !important;
 
                 .icon {
-                    fill: $color-blue !important;
+                    fill: $white !important;
                 }
             }
         }
 
         .icon {
-            fill: $color-semidark-blue;
+            fill: $color-white;
         }
     }
 
     &.is-secondary {
-        background-color: $secondary;
-        color: $primary;
+        background-color: $primary;
+        color: $primary-invert;
+        border-color: $secondary;
 
         &.is-outlined {
             color: $primary;
@@ -118,7 +119,7 @@ $button-transition-speed: $speed !default;
         }
 
         .icon {
-            fill: $white;
+            fill: $primary-invert;
         }
     }
 

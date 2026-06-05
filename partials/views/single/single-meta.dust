@@ -24,7 +24,10 @@
     {?content.categories}
         <div class="is-flex is-flex-wrap-wrap mt-4">
             {#content.categories}
-                <a href="{permalink|url}" class="pill mr-2 mb-2">{name|html}</a>
+                <a href="{permalink|url}" class="pill mr-2 mb-2">
+                    <span class="is-sr-only">{Strings.s.single.article_type|html}</span>
+                    {name|html}
+                </a>
             {/content.categories}
         </div>
     {/content.categories}

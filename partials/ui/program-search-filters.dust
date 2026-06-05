@@ -1,83 +1,129 @@
-<form id="program-search" role="search" method="get" class="search-form" action="{search.new_search_link|s}">
+<form id="program-search" role="search" method="get" class="search-form" action="{search.new_search_link|attr}">
     <div class="columns is-multiline has-background-light-gray m-0 p-6">
-        <div class="column is-12">
+        <div class="column is-10">
                 <div class="columns is-multiline">
-                    <div class="column is-two-fifths search-form is-flex is-flex-wrap-wrap is-align-items-center ui-front">
+                    <div class="column is-6 search-form is-flex is-flex-wrap-wrap is-align-items-start ui-front">
                         <label class="mr-2 has-width-100">
-                            <span class="is-sr-only">
-                                {Strings.s.search.write_search_terms|s}. 
-                                {Strings.s.program.search.sr_autocomplete_instructions|s}
-                            </span>
-                            <input type="search" 
+                            <input type="search"
                                 class="search-form__input program-search has-background-light p-3 has-width-100 has-border-radius-none has-border-2 has-border-primary has-text-weight-semibold"
-                                placeholder="{Strings.s.search.write_search_terms|s}" 
-                                value="{search.current_search|s}" 
-                                name="{search.input_search_name|s}" 
+                                placeholder="{Strings.s.search.write_search_terms|attr}"
+                                value="{search.current_search|attr}"
+                                name="{search.input_search_name|attr}"
+                                aria-label="{Strings.s.search.write_search_terms|attr}"
+                                aria-describedby="autocomplete-instructions"
                                 autocomplete="off" lang="{WP.language}">
+                                <span id="autocomplete-instructions" class="is-sr-only">
+                                {Strings.s.program.search.sr_autocomplete_instructions|html}
+                            </span>
                         </label>
                     </div>
-                    <div class="column is-two-fifths">
-                        <input type="checkbox" name="{search.checkbox_search_name|s}"
-                                class="is-checkradio" value="true"
-                                id="{search.checkbox_search_name|s}"
-                                {?search.only_ongoing}checked{/search.only_ongoing}>
-                        <label class="is-block mr-4 ml-0 mb-2 has-text-weight-semibold has-text-black" for="{search.checkbox_search_name|s}">
-                            {Strings.s.program.search.show_only_ongoing}
-                        </label>
+                    <div class="column is-6 is-flex is-flex-direction-column is-justify-content-center is-align-items-flex-start">
+                        <div>
+                            <input type="checkbox" name="{search.checkbox_search_name|attr}"
+                                    class="is-checkradio" value="true"
+                                    id="{search.checkbox_search_name|attr}"
+                                    {?search.only_ongoing}checked{/search.only_ongoing}>
+                            <label class="is-block mr-4 ml-0 mb-2 has-text-weight-semibold has-text-black" for="{search.checkbox_search_name|attr}">
+                                {Strings.s.program.search.show_only_ongoing|html}
+                            </label>
+                        </div>
+                        {?apply_method_radio_buttons}
+                        <div>
+                            <fieldset class="p-0">
+                                <legend class="has-text-black">{Strings.s.program.search.choose_apply_method|html}</legend>
+                                <div class="is-flex is-flex-wrap-wrap">
+                                    {#apply_method_radio_buttons}
+                                        <div class="mr-3 mb-1">
+                                            <input type="radio" name="{search.apply_method_radios|attr}[]"
+                                                value="{term_id|attr}"
+                                                id="apply-method-{slug|attr}"
+                                                class="is-checkradio"
+                                                {?active}checked{/active}>
+                                            <label for="apply-method-{slug|attr}" class="has-text-weight-semibold has-text-black is-flex is-align-items-center pl-6 p-0 mt-0 mb-0">
+                                                {name|html}
+                                            </label>
+                                        </div>
+                                    {/apply_method_radio_buttons}
+                                </div>
+                            </fieldset>
+                        </div>
+                        {/apply_method_radio_buttons}
                     </div>
-                    <div class="column is-one-fifth is-align-items-center">
-                        <button type="submit" class="search-form__button button button--icon is-secondary has-border-radius-small has-width-100">
-                            {Strings.s.header.search|s}
-                            {>"ui/icon" icon="search" class="icon--medium is-white" /}
-                        </button>
-                    </div>
+                    {?filters}
+                        <div class="accordion__inner bulmally-accordion column is-12">
+                            <div class="accordion__list">
+                                <div class="accordion__row mb-2 mb-4-tablet">
+                                    <h3 class="accordion__row-title m-0">
+                                        <button id="accordion-title-button-search"
+                                                class="accordion__title-button button button--icon is-primary"
+                                                type="button"
+                                                aria-expanded="false"
+                                                aria-controls="accordion-content-search">
+                                            <span class="accordion__row-title-text has-text-left">
+                                                {Strings.s.program.search.more_search_filters|html}
+                                            </span>
+
+                                            <span class="accordion__title-icon is-flex ml-auto" aria-hidden="true">
+                                                {>"ui/icon" icon="chevron-down" class="icon--medium" /}
+                                            </span>
+                                        </button>
+                                    </h3>
+
+                                    <div id="accordion-content-search"
+                                        class="accordion__content">
+                                        <div class="columns p-1 is-multiline mt-4">
+                                            {#filters}
+                                                <div class="column p-2 is-4-desktop is-6-tablet is-12-mobile">
+                                                    <div class="select-wrapper is-relative">
+                                                        <label>
+                                                            <select name="{query_var}[]"
+                                                            class="search-filter is-block has-width-100 has-border has-border-primary has-border-2 has-border-radius-none has-text-weight-semibold has-text-black has-line-height-tight pr-2 pl-2 pt-3 pb-3">
+                                                                <option selected="true" value="" class="has-text-black">{name|html}</option>
+                                                                {#terms}
+                                                                    {^active}
+                                                                        <option value="{term_id}" class="has-text-black">{name|html}</option>
+                                                                    {/active}
+                                                                {/terms}
+                                                            </select>
+                                                        </label>
+                                                        {>"ui/icon" icon="chevron-down" class="icon--medium is-black is-absolute" /}
+                                                    </div>
+                                                </div>
+                                            {/filters}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {/filters}
                 </div>
         </div>
 
-        {?filters}
-            <div class="column is-12">
-                <div class="columns is-multiline">
-                    {#filters}
-                    <div class="column is-one-fifth-widescreen is-3-desktop is-4-tablet is-12-mobile">
-                        <div class="select-wrapper is-relative">
-                        <label>
-                            <select name="{query_var}[]" 
-                            class="search-filter is-block has-width-100 has-border has-border-primary has-border-2 has-border-radius-none has-text-weight-semibold has-text-black has-line-height-tight p-3">
-                                <option selected="true" value="" class="has-text-black">{name|s}</option>
-                                {#terms}
-                                    {^active}
-                                        <option value="{term_id}" class="has-text-black">{name|s}</option>
-                                    {/active}
-                                {/terms}
-                            </select>
-                            <span class="is-sr-only">{Strings.s.program.search.commits_new_search|s}</span>
-                            </label>
-                            {>"ui/icon" icon="chevron-down" class="icon--medium is-black is-absolute" /}
-                        </div>
-                    </div>
-                    {/filters}
-                </div>
-            </div>
-        {/filters}
+        <div class="column is-2 is-align-items-center">
+            <button type="submit" class="search-form__button button button--icon is-primary has-border-radius-small has-width-100">
+                {Strings.s.header.search|html}
+                {>"ui/icon" icon="search" class="icon--medium is-white" /}
+            </button>
+        </div>
     </div>
 
      <div class="is-flex is-flex-wrap-wrap is-justify-content-space-between is-align-items-center pt-4 pb-4">
         {?results.summary}
-            <p class="has-text-weight-semibold has-text-black">{results.summary|s}</p>
+            <p class="has-text-weight-semibold has-text-black">{results.summary|html}</p>
         {/results.summary}
         {?filters}
             <div id="active-filters" class="is-flex-grow-1 pt-4 pb-4 pl-6 pr-6">
             {#filters}
                 {#terms}
                     {?active}
-                    <button type="button" class="remove-filter is-inline-flex is-align-items-center pt-2 pl-2 pr-3 pb-2 has-background-light-blueishgray
-                        has-border-radius-large has-line-height-1 has-text-weight-semibold 
+                    <button type="button" class="remove-filter is-inline-flex is-align-items-center pt-2 pl-2 pr-3 pb-2 has-background-light-gray
+                        has-border-radius-large has-line-height-1 has-text-weight-semibold
                         has-text-primary has-text-small has-border-0 is-family-secondary">
                         {>"ui/icon" icon="remove" class="icon--large mr-1" /}
-                        <span class="is-sr-only">{Strings.s.program.search.remove_filter|s}</span>
-                        <span>{name}</span>
-                        <input type="hidden" name="{query_var|s}[]" value="{term_id}" />
-                    </button>    
+                        <span class="is-sr-only">{Strings.s.program.search.remove_filter|html}</span>
+                        <span>{name|html}</span>
+                        <input type="hidden" name="{query_var|attr}[]" value="{term_id}" />
+                    </button>
                     {/active}
                 {/terms}
             {/filters}
@@ -85,7 +131,7 @@
         {/filters}
         <div class="is-flex is-justify-content-end is-flex-grow-1">
             <a class="is-inline-flex is-align-items-center pill has-border-radius-small is-primary pr-4 pl-4 pt-3 pb-3 mt-4 mb-4 ml-auto" href="{search.new_search_link}">
-                {Strings.s.program.search.commit_new_search}
+                {Strings.s.program.search.clear_search_terms|html}
                 {>"ui/icon" icon="update" class="icon--medium ml-2" /}
             </a>
         </div>

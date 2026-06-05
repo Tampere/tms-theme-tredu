@@ -92,7 +92,7 @@ class PageEventsSearchGroup {
             ->set_placement( 'left' );
 
         $keyword_field = ( new Field\Select( $strings['keyword']['label'] ) )
-            ->set_key( "${key}_keyword" )
+            ->set_key( "{$key}_keyword" )
             ->set_name( 'keyword' )
             ->use_ui()
             ->use_ajax()

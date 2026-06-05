@@ -31,7 +31,7 @@ class DialTreduSettingsTab extends Tab {
      * @var array
      */
     protected $strings = [
-        'tab'           => 'Dial Tredu',
+        'tab'             => 'Dial Tredu',
         'dial_tredu_page' => [
             'title'        => 'Listaussivu',
             'instructions' => 'Esitetään murupolussa.',

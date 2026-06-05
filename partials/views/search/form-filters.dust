@@ -5,17 +5,17 @@
                 <div class="search-filters">
                     <div class="search-filters">
                         <div class="search-filters__group">
-                            <div class="search-filters__label has-text-black has-text-weight-normal mb-2">
-                                {form.filter_by_post_type}
+                            <div id="search-filters-label" class="search-filters__label has-text-black has-text-weight-normal mb-2">
+                                {form.filter_by_post_type|html}
                             </div>
-                            <div class="is-flex is-flex-wrap-wrap">
+                            <div class="is-flex is-flex-wrap-wrap" role="group" aria-labelledby="search-filters-label">
                                 {#form.post_types}
                                     <input type="checkbox" name="search_post_types[]"
-                                           class="is-checkradio search-filters__post-type" value="{slug}"
-                                           id="cpt-{slug|s}"
+                                           class="is-checkradio search-filters__post-type" value="{slug|attr}"
+                                           id="cpt-{slug|attr}"
                                            {?is_checked}checked{/is_checked}>
-                                    <label class="is-block mr-4 ml-0 mb-2" for="cpt-{slug|s}">
-                                        {name|s}
+                                    <label class="is-block mr-4 ml-0 mb-2" for="cpt-{slug|attr}">
+                                        {name|html}
                                     </label>
                                 {/form.post_types}
                             </div>
@@ -23,38 +23,38 @@
 
                         <div class="search-filters__group mt-4">
                             <div class="search-filters__label has-text-black has-text-weight-normal mb-2">
-                                {form.filter_by_date}
+                                {form.filter_by_date|html}
                             </div>
 
                             <div class="search-filters__filter">
                                 <div class="is-inline-block mb-2">
                                     <label for="start-date">
-                                        <span class="is-sr-only">{form.filter_start_date|s}</span>
+                                        <span class="is-sr-only">{form.filter_start_date|html}</span>
                                     </label>
                                     <span class="is-block has-after-line">
                                             <duet-date-picker
                                                 identifier="start-date"
                                                 name="search_start_date"
-                                                value="{form.form_start_date}"
-                                                data-locale="{Header.site_locale}"></duet-date-picker>
+                                                value="{form.form_start_date|attr}"
+                                                data-locale="{Header.site_locale|attr}"></duet-date-picker>
                                         </span>
                                 </div>
                                 <div class="is-inline-block mb-2">
                                     <label for="end-date">
-                                        <span class="is-sr-only">{form.filter_end_date|s}</span>
+                                        <span class="is-sr-only">{form.filter_end_date|html}</span>
                                     </label>
                                     <span class="is-block">
                                             <duet-date-picker
                                                 identifier="end-date"
                                                 name="search_end_date"
-                                                value="{form.form_end_date}"
-                                                data-locale="{Header.site_locale}"></duet-date-picker>
+                                                value="{form.form_end_date|attr}"
+                                                data-locale="{Header.site_locale|attr}"></duet-date-picker>
                                         </span>
                                 </div>
 
                                 <div class="search__submit-wrapper">
                                     <button type="submit"
-                                            class="search-form__button button button--icon pt-4 pr-7 pb-4 pl-7 is-pulled-right-desktop is-secondary">
+                                            class="search-form__button button button--icon pt-4 pr-7 pb-4 pl-7 is-pulled-right-desktop is-primary">
                                         {form.search|html}
                                         {>"ui/icon" icon="search" class="icon--medium"  /}
                                     </button>

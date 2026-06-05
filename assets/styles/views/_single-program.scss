@@ -17,6 +17,22 @@
         .overlay {
             background: linear-gradient(0deg, rgba(4, 37, 70, .55), rgba(4, 37, 70, .55));
         }
+
+        .has-background-green {
+            background-color: $color-spruce-green !important;
+
+            h2, p {
+                color: $white !important;
+            }
+        }
+
+        .has-background-red {
+            background-color: $color-fuchsia !important;
+
+            h2, p {
+                color: $white !important;
+            }
+        }
     }
 
     &__hero-box {
@@ -43,7 +59,7 @@
     }
 
     &__info {
-        background-color: $color-light-blueishgray;
+        background-color: $color-light-gray;
         color: $color-dark-blue;
     }
 
@@ -73,5 +89,117 @@
     &__info-item-text {
         font-size: .94444444rem;
         line-height: 1.7;
+    }
+
+    &__add-favorite {
+        .button {
+            padding: 0;
+            background-color: transparent;
+            border-color: transparent;
+
+            .icon-wrapper {
+                margin-left: $theme-spacing-half;
+
+                svg {
+                    height: 1rem;
+                    width: 1.5rem;
+                }
+            }
+
+            // Active favorite
+            &[aria-pressed="true"] {
+                svg path {
+                    fill: $color-red;
+                }
+            }
+        }
+    }
+
+    // Print styles
+    @media print {
+        #rs-button,
+        .print-button,
+        .site-header,
+        footer,
+        .breadcrumbs-container,
+        .icon--external,
+        .icon--arrow-right,
+        [aria-hidden="true"],
+        .section.map,
+        .video,
+        .accordion__open-all {
+            display: none !important;
+        }
+
+        * {
+            color: $black !important;
+        }
+
+        // Blocks container
+        .column.is-10.is-offset-1 {
+            width: 100% !important;
+            margin: 0 !important;
+        }
+
+        .entry__content > *:not(ul) {
+            padding: 0 !important;
+        }
+
+        .icon {
+            fill: $black !important;
+        }
+
+        .button {
+            border-color: $black !important;
+        }
+
+        .mt-6,
+        .mb-6,
+        .mt-5,
+        .mb-5,
+        .mt-4,
+        .mb-4m
+        h2,
+        h3,
+        h4 {
+            margin: .5rem 0 !important;
+        }
+
+        a {
+            text-decoration: underline;
+
+            &::after {
+                content: "\00a0(" attr(href) ")\00a0";
+            }
+        }
+
+        .single-program {
+            &__hero {
+                .column,
+                .p-7 {
+                    padding: 0 !important;
+                }
+            }
+
+            &__hero-box {
+                text-align: left;
+                padding: 0 !important;
+            }
+        }
+
+        .accordion {
+            &__title-button,
+            &__content {
+                padding: rem(8px) 0 !important;
+            }
+
+            &__title-icon {
+                display: none !important;
+            }
+
+            &__content {
+                display: block !important;
+            }
+        }
     }
 }

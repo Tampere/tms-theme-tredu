@@ -85,7 +85,7 @@ class ThemeColorTab extends \Geniem\ACF\Field\Tab {
                 ->set_instructions( $this->strings['color_selection']['instructions'] );
 
             $image_field = ( new Field\Image( $this->strings['default_image']['title'] ) )
-                ->set_key( "${key}_default_image" )
+                ->set_key( "{$key}_default_image" )
                 ->set_name( 'default_image' )
                 ->set_return_format( 'id' )
                 ->set_instructions( $this->strings['default_image']['instructions'] );

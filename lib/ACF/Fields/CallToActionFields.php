@@ -67,6 +67,10 @@ class CallToActionFields extends Field\Group {
                 'label'        => 'Linkki',
                 'instructions' => '',
             ],
+            'link_second'    => [
+                'label'        => 'Linkki',
+                'instructions' => 'Toinen linkki, linkit asemmoituu päällekkäin.',
+            ],
             'display_artist'   => [
                 'label'        => 'Kuvan tekijätiedot',
                 'instructions' => 'Näytetäänkö kuvan alla kuvan tekijätiedot?',
@@ -82,7 +86,7 @@ class CallToActionFields extends Field\Group {
         $key = $this->get_key();
 
         $rows_field = ( new Field\Repeater( $strings['rows']['label'] ) )
-            ->set_key( "${key}_rows" )
+            ->set_key( "{$key}_rows" )
             ->set_name( 'rows' )
             ->set_min( 1 )
             ->set_max( 6 )
@@ -91,33 +95,40 @@ class CallToActionFields extends Field\Group {
             ->set_instructions( $strings['rows']['instructions'] );
 
         $image_field = ( new Field\Image( $strings['image']['label'] ) )
-            ->set_key( "${key}_numbers" )
+            ->set_key( "{$key}_numbers" )
             ->set_name( 'image' )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['image']['instructions'] );
 
         $title_field = ( new Field\Text( $strings['title']['label'] ) )
-            ->set_key( "${key}_title" )
+            ->set_key( "{$key}_title" )
             ->set_name( 'title' )
             ->set_wrapper_width( 50 )
+            ->redipress_include_search()
             ->set_instructions( $strings['title']['instructions'] );
 
-        $description_field = ( new Field\Textarea( $strings['description']['label'] ) )
-            ->set_key( "${key}_description" )
+        $description_field = ( new Field\Wysiwyg( $strings['description']['label'] ) )
+            ->set_key( "{$key}_description" )
             ->set_name( 'description' )
-            ->set_rows( 4 )
-            ->set_new_lines( 'wpautop' )
-            ->set_wrapper_width( 50 )
+            ->set_toolbar( [ 'bold', 'italic' ] )
+            ->disable_media_upload()
+            ->redipress_include_search()
             ->set_instructions( $strings['description']['instructions'] );
 
         $link_field = ( new Field\Link( $strings['link']['label'] ) )
-            ->set_key( "${key}_link" )
+            ->set_key( "{$key}_link" )
             ->set_name( 'link' )
             ->set_wrapper_width( 50 )
             ->set_instructions( $strings['link']['instructions'] );
 
+        $link_second_field = ( new Field\Link( $strings['link_second']['label'] ) )
+            ->set_key( "{$key}_link_second" )
+            ->set_name( 'link_second' )
+            ->set_wrapper_width( 50 )
+            ->set_instructions( $strings['link_second']['instructions'] );
+
         $layout_field = ( new Field\Radio( $strings['layout']['label'] ) )
-            ->set_key( "${key}_layout" )
+            ->set_key( "{$key}_layout" )
             ->set_name( 'layout' )
             ->set_choices( [
                 'is-image-first' => 'Kuva ensin',
@@ -127,7 +138,7 @@ class CallToActionFields extends Field\Group {
             ->set_instructions( $strings['layout']['instructions'] );
 
         $display_artist_field = ( new Field\TrueFalse( $strings['display_artist']['label'] ) )
-            ->set_key( "${key}_display_artist" )
+            ->set_key( "{$key}_display_artist" )
             ->set_name( 'display_artist' )
             ->set_wrapper_width( 50 )
             ->use_ui()
@@ -136,7 +147,7 @@ class CallToActionFields extends Field\Group {
             ->set_instructions( $strings['display_artist']['instructions'] );
 
         $background_color_field = ( new Field\Select( $strings['background_color']['label'] ) )
-            ->set_key( "${key}_background_color" )
+            ->set_key( "{$key}_background_color" )
             ->set_name( 'background_color' )
             ->set_choices( [
                 'primary-light' => 'Vaalea',
@@ -151,6 +162,7 @@ class CallToActionFields extends Field\Group {
             $title_field,
             $description_field,
             $link_field,
+            $link_second_field,
             $layout_field,
             $display_artist_field,
             $background_color_field,

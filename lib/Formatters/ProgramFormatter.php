@@ -44,13 +44,16 @@ class ProgramFormatter implements Formatter {
      * @return array
      */
     public function format( array $data ) : array {
-        $programs = $this->query_programs( $data );
+        $program_query = $this->query_programs( $data );
+        $programs = $program_query->posts;
 
         if ( ! empty( $programs ) ) {
             $programs = Program::format_posts( $programs, $this->get_tax_map() );
         }
 
-        $data['posts'] = $programs;
+        $data['posts']          = $programs;
+        $data['found_posts']    = $program_query->found_posts;
+        $data['posts_per_page'] = $program_query->post_count;
 
         return $data;
     }
@@ -60,15 +63,15 @@ class ProgramFormatter implements Formatter {
      *
      * @param array $layout Layout.
      *
-     * @return array
+     * @return \WP_Query
      */
-    private function query_programs( array $layout ) : array {
+    public function query_programs( array $layout ) : \WP_Query {
         $args = [
             'post_type'              => Program::SLUG,
             'update_post_meta_cache' => false,
-            'no_found_rows'          => true,
             'orderby'                => [ 'start_date' => 'ASC', 'title' => 'ASC' ],
             'posts_per_page'         => $layout['number'] ?? 4,
+            'offset'                 => $layout['offset'] ?? 0,
         ];
 
         $date_query = $this->get_date_query( $layout );
@@ -84,7 +87,7 @@ class ProgramFormatter implements Formatter {
             $args['tax_query'] = $tax_query;
         }
 
-        return ( new \WP_Query( $args ) )->get_posts();
+        return new \WP_Query( $args );
     }
 
     /**
@@ -94,7 +97,7 @@ class ProgramFormatter implements Formatter {
      *
      * @return array
      */
-    private function get_tax_query( array $layout ) : array {
+    public function get_tax_query( array $layout ) : array {
         $taxonomies = $this->get_tax_map();
 
         $tax_query = [];
@@ -128,7 +131,7 @@ class ProgramFormatter implements Formatter {
      *
      * @return array
      */
-    private function get_tax_map() : array {
+    public function get_tax_map() : array {
         return [
             'apply_method'           => ApplyMethod::SLUG,
             'program_type'           => ProgramType::SLUG,
@@ -145,7 +148,7 @@ class ProgramFormatter implements Formatter {
      *
      * @return array
      */
-    private function get_date_query( array $layout ) : array {
+    public function get_date_query( array $layout ) : array {
         $meta_query = [];
 
         if ( ! empty( $layout['apply_start'] ) ) {

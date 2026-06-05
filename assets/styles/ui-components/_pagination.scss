@@ -1,10 +1,10 @@
 $pagination-item-color: $secondary-invert !default;
 $pagination-item-color-current: $primary-invert !default;
-$pagination-item-color-hover: $secondary !default;
-$pagination-item-color-focus: $secondary !default;
+$pagination-item-color-hover: $secondary-invert !default;
+$pagination-item-color-focus: $secondary-invert !default;
 
-$pagination-item-background-color-hover: $primary;
-$pagination-item-background-color-focus: $primary;
+$pagination-item-background-color-hover: $primary-invert;
+$pagination-item-background-color-focus: $primary-invert;
 $pagination-item-background-color-current: $primary !default;
 $pagination-item-background-color-current-hover: $primary-dark !default;
 $pagination-item-background-color-current-focus: $primary-dark !default;
@@ -33,19 +33,15 @@ $pagination-item-transition-speed: $speed !default;
             &:focus {
                 color: $pagination-item-color-focus;
                 background-color: $pagination-item-background-color-focus;
-                border-color: transparent;
                 outline-style: dashed;
-                outline-offset: -2px;
-                outline-color: $secondary;
+                outline-offset: 2px;
+                outline-color: $primary;
                 outline-width: 2px;
-                text-decoration: none;
             }
 
             &:hover {
                 color: $pagination-item-color-hover;
                 background-color: $pagination-item-background-color-hover;
-                border-color: transparent;
-                text-decoration: none;
             }
 
             &:active {

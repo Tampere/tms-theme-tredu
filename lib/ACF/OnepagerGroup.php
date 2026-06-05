@@ -56,6 +56,7 @@ class OnepagerGroup {
                 // 'articles'        => Layouts\ArticlesLayout::class,
                 'notice_banner'  => Layouts\NoticeBannerLayout::class,
                 'gravityform'    => Layouts\GravityFormLayout::class,
+                'video'          => Layouts\VideoLayout::class,
                 // 'textblock'       => false,
             ]
         );
@@ -128,7 +129,7 @@ class OnepagerGroup {
         ];
 
         $components_field = ( new Field\FlexibleContent( $strings['components']['title'] ) )
-            ->set_key( "${key}_components" )
+            ->set_key( "{$key}_components" )
             ->set_name( 'components' )
             ->set_instructions( $strings['components']['instructions'] );
 

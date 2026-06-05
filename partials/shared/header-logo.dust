@@ -1,5 +1,5 @@
 <div class="site-header__logo is-relative">
-    <div class="site-header__logo-image">
+    <div class="site-header__logo-image pr-2">
     {?Header.logo}
         {?Header.home_url}
             <a href="{Header.home_url}" class="is-block">

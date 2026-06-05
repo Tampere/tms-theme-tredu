@@ -27,6 +27,11 @@ import DatePicker from './date-picker';
 import GravityFormsPatch from './gravity-forms-patch';
 import Countdown from './countdown';
 import ProgramSearch from './program-search';
+import LoadMore from './load-more';
+import SearchFilters from './search-filters';
+import FocusOnSearch from './focus-on-search';
+import FavoritePrograms from './program-favorite';
+import GtranslateDropdown from './gtranslate-dropdown';
 
 const globalControllers = {
     Common,
@@ -53,6 +58,11 @@ const globalControllers = {
     GravityFormsPatch,
     Countdown,
     ProgramSearch,
+    LoadMore,
+    SearchFilters,
+    FocusOnSearch,
+    FavoritePrograms,
+    GtranslateDropdown,
 };
 
 const templateControllers = {

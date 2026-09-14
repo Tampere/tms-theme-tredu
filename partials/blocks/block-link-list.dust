@@ -1,4 +1,4 @@
-<div class="link-list is-relative mt-8 mb-8 p-8 has-background-primary has-text-primary-invert">
+<div {?anchor}id="{anchor|attr}"{/anchor} class="link-list is-relative mt-8 mb-8 p-8 has-background-primary has-text-primary-invert">
     {>"shared/layout-before-main-content" /}
 
     {?title}

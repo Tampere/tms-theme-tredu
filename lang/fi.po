@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMS Theme Base\n"
-"POT-Creation-Date: 2026-05-05 13:37+0300\n"
-"PO-Revision-Date: 2026-05-05 13:37+0300\n"
+"POT-Creation-Date: 2026-05-27 12:35+0300\n"
+"PO-Revision-Date: 2026-05-27 12:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -21,6 +21,14 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
+
+#: assets/dist/theme_tredu.js:1
+msgid "#js-search-toggle-target"
+msgstr ""
+
+#: assets/dist/theme_tredu.js:1
+msgid "#js-search-toggle"
+msgstr ""
 
 #: comments.php:14
 msgid "Comments"
@@ -121,17 +129,17 @@ msgstr "Blogin kirjoittaja"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: lib/DustPressController.php:60
+#: lib/DustPressController.php:65
 msgctxt "pagination"
 msgid "Go to Page"
 msgstr "Siirry sivulle"
 
-#: lib/DustPressController.php:61
+#: lib/DustPressController.php:66
 msgctxt "pagination"
 msgid "Next"
 msgstr "Seuraava"
 
-#: lib/DustPressController.php:62
+#: lib/DustPressController.php:67
 msgctxt "pagination"
 msgid "Previous"
 msgstr "Edellinen"
@@ -303,27 +311,32 @@ msgctxt "theme CPT"
 msgid "Tredu Event"
 msgstr ""
 
-#: lib/Roles.php:425 lib/Roles.php:426
+#: lib/Roles.php:487
+msgctxt "wp-geniem-roles"
+msgid "Super Administrator"
+msgstr ""
+
+#: lib/Roles.php:604
 msgctxt "wp-geniem-roles"
 msgid "Administrator"
 msgstr ""
 
-#: lib/Roles.php:428 lib/Roles.php:429
+#: lib/Roles.php:671
 msgctxt "wp-geniem-roles"
 msgid "Site Manager"
 msgstr ""
 
-#: lib/Roles.php:431 lib/Roles.php:432
+#: lib/Roles.php:734
 msgctxt "wp-geniem-roles"
 msgid "Author"
 msgstr "Kirjoittaja"
 
-#: lib/Roles.php:434 lib/Roles.php:435
+#: lib/Roles.php:878
 msgctxt "wp-geniem-roles"
 msgid "Contributor"
 msgstr ""
 
-#: lib/Roles.php:437 lib/Roles.php:438
+#: lib/Roles.php:898
 msgctxt "wp-geniem-roles"
 msgid "Subscriber"
 msgstr ""
@@ -597,8 +610,8 @@ msgid "No search results"
 msgstr "Ei hakutuloksia"
 
 #: models/shared/header.php:475
-msgid "Select language"
-msgstr "Valitse kieli"
+msgid "Translate"
+msgstr "Käännä"
 
 #: models/shared/header.php:476
 msgid ""
@@ -1447,6 +1460,9 @@ msgstr "Geniem"
 #. Author URI of the plugin/theme
 msgid "https://geniem.fi"
 msgstr ""
+
+#~ msgid "Select language"
+#~ msgstr "Valitse kieli"
 
 #~ msgctxt "text direction"
 #~ msgid "ltr"

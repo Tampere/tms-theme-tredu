@@ -472,7 +472,7 @@ class Header extends Model {
 
         return [
             'current_language' => $current_lang,
-            'select_text'      => \__( 'Select language', 'tms-theme-tredu' ),
+            'select_text'      => \__( 'Translate', 'tms-theme-tredu' ),
             'disclaimer_text'  => \__( 'The City of Tampere is not responsible for translations made by Google Translate.', 'tms-theme-tredu' ),
             'cookies_disabled' => \__( "Unfortunately you are not able to use the translation option since you haven't accepted related cookies. You can accept cookies by clicking the Accept cookies button below.", 'tms-theme-tredu' ),
             'accept_cookies'   => \__( 'Accept cookies', 'tms-theme-tredu' ),

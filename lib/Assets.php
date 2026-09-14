@@ -38,8 +38,20 @@ class Assets implements Interfaces\Controller {
         );
 
         \add_action(
+            'admin_footer',
+            \Closure::fromCallable( [ $this, 'include_admin_svg_icons' ] )
+        );
+
+        \add_action(
             'enqueue_block_editor_assets',
             \Closure::fromCallable( [ $this, 'editor' ] )
+        );
+
+        \add_filter(
+            'block_editor_settings_all',
+            \Closure::fromCallable( [ $this, 'add_canvas_styles_to_block_editor_settings' ] ),
+            20,
+            1
         );
 
         \add_action(
@@ -193,6 +205,60 @@ class Assets implements Interfaces\Controller {
     }
 
     /**
+     * Add front-end style parity only into block editor canvas (iframe).
+     *
+     * @param array $settings Block editor settings.
+     *
+     * @return array
+     */
+    private function add_canvas_styles_to_block_editor_settings( array $settings ) : array {
+        if ( ! is_admin() ) {
+            return $settings;
+        }
+
+        if ( function_exists( 'wp_should_load_block_editor_scripts_and_styles' )
+            && ! \wp_should_load_block_editor_scripts_and_styles()
+        ) {
+            return $settings;
+        }
+
+        $css         = 'theme_tredu.css';
+        $css_url     = apply_filters( 'tms/theme/theme_css_path', DPT_ASSET_URI . '/' . $css, $css );
+        $css_version = apply_filters( 'tms/theme/asset_mod_time', static::get_theme_asset_mod_time( $css ), $css );
+        $css_url     = \add_query_arg( 'ver', (string) $css_version, $css_url );
+
+        $canvas_css = '@import url("' . \esc_url_raw( $css_url ) . '");\n';
+        $canvas_css .= $this->get_editor_canvas_acf_css();
+
+        if ( ! isset( $settings['styles'] ) || ! is_array( $settings['styles'] ) ) {
+            $settings['styles'] = [];
+        }
+
+        $settings['styles'][] = [
+            'css' => $canvas_css,
+        ];
+
+        return $settings;
+    }
+
+    /**
+     * Load static editor canvas CSS for ACF block affordances.
+     *
+     * @return string
+     */
+    private function get_editor_canvas_acf_css() : string {
+        $path = DPT_ASSET_CACHE_URI . '/editor.css';
+
+        if ( ! file_exists( $path ) ) {
+            return '';
+        }
+
+        $css = file_get_contents( $path );
+
+        return is_string( $css ) ? $css : '';
+    }
+
+    /**
      * Admin assets.
      */
     private function admin_assets() : void {
@@ -249,6 +315,19 @@ class Assets implements Interfaces\Controller {
 
         if ( file_exists( $svg_icons_path ) ) {
             include_once $svg_icons_path;
+        }
+    }
+
+    /**
+     * Add SVG definitions to admin footer for editor sprite syncing.
+     */
+    private function include_admin_svg_icons() : void {
+        $svg_icons_path = \get_template_directory() . '/assets/dist/icons.svg';
+
+        if ( file_exists( $svg_icons_path ) ) {
+            echo '<div id="tms-icons-sprite" aria-hidden="true" style="display:none">';
+            include_once $svg_icons_path;
+            echo '</div>';
         }
     }
 

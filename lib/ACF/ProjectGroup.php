@@ -6,6 +6,7 @@ use Geniem\ACF\Exception;
 use Geniem\ACF\Group;
 use Geniem\ACF\RuleGroup;
 use Geniem\ACF\Field;
+use TMS\Theme\Tredu\ACF\Fields\ContactsFields;
 use TMS\Theme\Tredu\Logger;
 use TMS\Theme\Tredu\PostType;
 
@@ -323,6 +324,22 @@ class ProjectGroup {
                 'title'        => 'Yhteyshenkilö',
                 'instructions' => '',
             ],
+            'funder'      => [
+                'title'        => 'Rahoittaja',
+                'instructions' => '',
+            ],
+            'funder_text' => [
+                'title'        => 'Lisätieto',
+                'instructions' => '',
+            ],
+            'implementer'      => [
+                'title'        => 'Projektin toteuttaja',
+                'instructions' => '',
+            ],
+            'implementer_text' => [
+                'title'        => 'Lisätieto',
+                'instructions' => '',
+            ],
         ];
 
         $tab = ( new Field\Tab( $strings['tab'] ) )
@@ -401,11 +418,66 @@ class ProjectGroup {
             $contact_field,
         ] );
 
+        $project_contacts_title_field = ( new Field\Text( $strings['contacts']['title'] ) )
+            ->set_key( "{$key}_project_contacts_title" )
+            ->set_name( 'project_contacts_title' )
+            ->set_instructions( '' );
+
+        $project_contacts_fields = new ContactsFields(
+            $strings['contacts']['title'],
+            "{$key}_project_contacts",
+            'project_contacts'
+        );
+        $project_contacts_fields->remove_field( 'title' );
+        $project_contacts_fields->remove_field( 'description' );
+
+        $funder_group = ( new Field\Group( $strings['funder']['title'] ) )
+            ->set_name( 'funder' );
+
+        $funder_title_field = ( new Field\Text( $strings['group_title']['title'] ) )
+            ->set_key( "{$key}_funder_title" )
+            ->set_name( 'funder_title' )
+            ->set_instructions( $strings['group_title']['instructions'] );
+
+        $funder_text_field = ( new Field\Textarea( $strings['funder_text']['title'] ) )
+            ->set_key( "{$key}_funder_text" )
+            ->set_name( 'funder_text' )
+            ->set_rows( 3 )
+            ->set_instructions( $strings['funder_text']['instructions'] );
+
+        $funder_group->add_fields( [
+            $funder_title_field,
+            $funder_text_field,
+        ] );
+
+        $implementer_group = ( new Field\Group( $strings['implementer']['title'] ) )
+            ->set_name( 'implementer' );
+
+        $implementer_title_field = ( new Field\Text( $strings['group_title']['title'] ) )
+            ->set_key( "{$key}_implementer_title" )
+            ->set_name( 'implementer_title' )
+            ->set_instructions( $strings['group_title']['instructions'] );
+
+        $implementer_text_field = ( new Field\Textarea( $strings['implementer_text']['title'] ) )
+            ->set_key( "{$key}_implementer_text" )
+            ->set_name( 'implementer_text' )
+            ->set_rows( 3 )
+            ->set_instructions( $strings['implementer_text']['instructions'] );
+
+        $implementer_group->add_fields( [
+            $implementer_title_field,
+            $implementer_text_field,
+        ] );
+
         $tab->add_fields( [
             $website_group,
             $duration_group,
             $portfolio_group,
             $contacts_group_field,
+            $project_contacts_title_field,
+            $project_contacts_fields,
+            $funder_group,
+            $implementer_group,
         ] );
 
         return $tab;

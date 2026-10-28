@@ -1,6 +1,7 @@
 <?php
 
 use DustPress\Query;
+use TMS\Theme\Tredu\Formatters\ContactFormatter;
 use TMS\Theme\Tredu\Traits;
 
 /**
@@ -45,7 +46,7 @@ class SingleProject extends BaseModel {
      * @return array|void
      */
     public function logo_cloud() {
-        $logos = get_field( 'logos' );
+        $logos = \get_field( 'logos' );
 
         if ( empty( $logos ) ) {
             return;
@@ -53,8 +54,8 @@ class SingleProject extends BaseModel {
 
         return [
             'logos'       => $logos,
-            'title'       => get_field( 'logo_cloud_title' ),
-            'description' => get_field( 'logo_cloud_description' ),
+            'title'       => \get_field( 'logo_cloud_title' ),
+            'description' => \get_field( 'logo_cloud_description' ),
         ];
     }
 
@@ -65,10 +66,46 @@ class SingleProject extends BaseModel {
      */
     public function sidebar() {
         return [
-            'website'   => get_field( 'website' ),
-            'duration'  => get_field( 'duration' ),
-            'portfolio' => get_field( 'portfolio' ),
-            'contacts'  => get_field( 'contacts' ),
+            'website'          => \get_field( 'website' ),
+            'duration'         => \get_field( 'duration' ),
+            'portfolio'        => \get_field( 'portfolio' ),
+            'contacts'         => \get_field( 'contacts' ),
+            'project_contacts' => [
+                'project_contacts_title' => \get_field( 'project_contacts_title' ),
+                'contacts'               => $this->contacts(),
+            ],
+            'funder'           => \get_field( 'funder' ),
+            'implementer'      => \get_field( 'implementer' ),
         ];
+    }
+
+    /**
+     * Get project contacts.
+     *
+     * @return array
+     */
+    public function contacts() : array {
+        $project_contacts      = \get_field( 'project_contacts' ) ?: [];
+        $selected_contacts     = ! empty( $project_contacts['contacts'] ) ? $project_contacts['contacts'] : [];
+        $selected_api_contacts = ! empty( $project_contacts['api_contacts'] ) ? $project_contacts['api_contacts'] : [];
+        $selected_fields       = ! empty( $project_contacts['fields'] ) ? $project_contacts['fields'] : [ 'first_name', 'last_name' ];
+        $formatter             = new ContactFormatter();
+
+        $contacts = $formatter->map_keys(
+            $selected_contacts,
+            $selected_fields,
+            null
+        );
+
+        $api_contacts = $formatter->map_api_contacts(
+            $selected_api_contacts,
+            $selected_fields,
+            null
+        );
+
+        return array_merge(
+            $contacts ?? [],
+            $api_contacts ?? []
+        );
     }
 }

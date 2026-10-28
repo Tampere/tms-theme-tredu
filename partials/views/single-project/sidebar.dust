@@ -9,3 +9,27 @@
 {@isset key1=sidebar.contacts.meta_contacts_title key2=sidebar.contacts.contacts method="AND" }
     {>"views/single-project/sidebar__item" icon="user" sidebar_title=sidebar.contacts.meta_contacts_title sidebar_content=sidebar.contacts.contacts /}
 {/isset}
+
+{@isset key1=sidebar.project_contacts.project_contacts_title key2=sidebar.project_contacts.contacts method="AND" }
+    <div class="single-project__info-group is-flex is-align-items-center mb-5 pt-4 pr-6 pb-4 pl-6">
+        <div class="single-project__info-title">
+            {>"ui/icon" icon="user" class="icon--xlarge is-black" /}
+        </div>
+
+        <div class="single-project__info-description ml-5 keep-vertical-spacing">
+            <p class="h5 mt-0 mb-2">{sidebar.project_contacts.project_contacts_title|html}</p>
+
+            {#sidebar.project_contacts.contacts}
+                {>"views/single-project/sidebar__contact" /}
+            {/sidebar.project_contacts.contacts}
+        </div>
+    </div>
+{/isset}
+
+{@isset key1=sidebar.funder.funder_title key2=sidebar.funder.funder_text method="AND" }
+    {>"views/single-project/sidebar__item" icon="euro" sidebar_title=sidebar.funder.funder_title sidebar_content=sidebar.funder.funder_text /}
+{/isset}
+
+{@isset key1=sidebar.implementer.implementer_title key2=sidebar.implementer.implementer_text method="AND" }
+    {>"views/single-project/sidebar__item" icon="building" sidebar_title=sidebar.implementer.implementer_title sidebar_content=sidebar.implementer.implementer_text /}
+{/isset}

@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.19.1] - 2026-10-26
+
+- TMS-1295: Error fix for project contacts
+
+## [1.19.0] - 2026-10-26
+
+- TMS-1295: Project-CPT additions:
+    - Add more advanced contact-fields to sidebar
+    - Add funder & implementer sections to sidebar
+    - Add a flex rule to logo-cloud so there are 6 logos side by side on desktop
+
 ## [1.18.2] - 2026-08-31
 
 - TMS-1280:

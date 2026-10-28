@@ -1,0 +1,123 @@
+<div class="mt-4 mb-4">
+    {?additional_info_top}
+        <div class="h6 contacts__additional-info-top mb-3 keep-vertical-spacing">
+            {additional_info_top|kses}
+        </div>
+    {/additional_info_top}
+
+    {@isset key1=first_name key2=last_name method="OR" }
+        <p class="h6 contacts__name has-text-weight-bold mb-3 mt-0">
+            {first_name|html} {last_name|html}
+        </p>
+    {/isset}
+
+    {?title}
+        <p class="mb-2 mt-0 hyphenate">
+            {title|html}
+        </p>
+    {/title}
+
+    {?phone_repeater}
+        <div class="mb-3">
+            {#phone_repeater}
+                <div class="is-flex is-align-items-center">
+                    <div class="contacts__icon-container">
+                        {>"ui/icon" icon="phone" class="icon--large is-primary" /}
+                    </div>
+
+                    <div>
+                        <span>{phone_text|html}</span>
+                        <div>
+                            <a href="tel:{?trimmed_number}{trimmed_number|html}{:else}{phone_number|html}{/trimmed_number}"
+                               class="has-text-paragraph hyphenate">
+                                {phone_number|html}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {/phone_repeater}
+        </div>
+    {/phone_repeater}
+
+    {?email}
+        <div class="is-flex is-align-items-center mb-3">
+            <div class="contacts__icon-container">
+                {>"ui/icon" icon="email" class="icon--large is-primary" /}
+            </div>
+
+            <a href="mailto:{email|html}" class="has-text-paragraph hyphenate">
+                {email|html}
+            </a>
+        </div>
+    {/email}
+
+    {?office}
+        <div class="is-flex is-align-items-center mb-3">
+            <div class="contacts__icon-container">
+                {>"ui/icon" icon="building" class="icon--large is-primary" /}
+            </div>
+
+            <p class="m-0">
+                {office|html}
+            </p>
+        </div>
+    {/office}
+
+    {?domain}
+        <div class="is-flex is-align-items-center mb-3">
+            <div class="contacts__icon-container">
+                {>"ui/icon" icon="location" class="icon--large is-primary" /}
+            </div>
+
+            <p class="m-0">
+                {domain|html}
+            </p>
+        </div>
+    {/domain}
+
+    {?unit}
+        <div class="is-flex is-align-items-center mb-3">
+            <div class="contacts__icon-container">
+                {>"ui/icon" icon="location" class="icon--large is-primary" /}
+            </div>
+
+            <p class="m-0">
+                {unit|html}
+            </p>
+        </div>
+    {/unit}
+
+    {@isset key1=visiting_address_street key2=visiting_address_zip_code key3=visiting_address_city method="OR" }
+        <div class="is-flex is-align-items-center mb-3">
+            <div class="contacts__icon-container">
+                {>"ui/icon" icon="location" class="icon--large is-primary" /}
+            </div>
+
+            <p class="m-0">
+                {visiting_address_street|html}
+                {visiting_address_zip_code|html}
+                {visiting_address_city|html}
+            </p>
+        </div>
+    {/isset}
+
+    {@isset key1=mail_address_street key2=mail_address_zip_code key3=mail_address_city method="OR" }
+        <div class="is-flex is-align-items-center mb-3">
+            <div class="contacts__icon-container">
+                {>"ui/icon" icon="location" class="icon--large is-primary" /}
+            </div>
+
+            <p class="m-0">
+                {mail_address_street|html}
+                {mail_address_zip_code|html}
+                {mail_address_city|html}
+            </p>
+        </div>
+    {/isset}
+
+    {?additional_info_bottom}
+        <div>
+            {additional_info_bottom|kses}
+        </div>
+    {/additional_info_bottom}
+</div>

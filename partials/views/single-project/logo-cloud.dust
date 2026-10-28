@@ -16,7 +16,7 @@
             <div
                 class="single-project__logo-cloud is-align-full is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-space-evenly is-align-content-center is-align-items-center has-text-centered {container_class|attr}">
                 {#logo_cloud.logos}
-                    <div class="single-project__logo-cloud-item m-3 m-5-tablet m-7-desktop is-inline-flex">
+                    <div class="single-project__logo-cloud-item m-5 m-1-desktop is-inline-flex">
                         {?link.url}
                             <a href="{link.url|url}" target="{link.target|attr}" class="logo-wall__link is-block">
                                 {@image id=logo.id size="medium" class="is-block" /}

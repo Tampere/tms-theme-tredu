@@ -11,6 +11,12 @@
         background-color: $color-light-gray;
     }
 
+    &__logo-cloud-item {
+        @include from($desktop) {
+            flex: 0 0 calc((100% - (16px * 5)) / 6);
+        }
+    }
+
     &__info-group {
         background-color: $color-semilight-gray;
 

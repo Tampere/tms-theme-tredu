@@ -120,13 +120,17 @@ class ContactFormatter implements \TMS\Theme\Tredu\Interfaces\Formatter {
     /**
      * Map keys to posts
      *
-     * @param array $posts         Array of WP_Post instances.
-     * @param array $field_keys    Array of field keys to be displayed.
-     * @param null  $default_image Default image.
+     * @param array|mixed $posts         Array of WP_Post instances.
+     * @param array       $field_keys    Array of field keys to be displayed.
+     * @param null        $default_image Default image.
      *
      * @return array
      */
-    public function map_keys( array $posts, array $field_keys, $default_image = null ) : array {
+    public function map_keys( $posts, array $field_keys, $default_image = null ) : array {
+        if ( empty( $posts ) || ! is_array( $posts ) ) {
+            return [];
+        }
+
         return array_map( function ( $id ) use ( $field_keys, $default_image ) {
             $fields = [];
 

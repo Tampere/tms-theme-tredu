@@ -400,24 +400,6 @@ class ProjectGroup {
             $portfolio_text_field,
         ] );
 
-        $contacts_title_field = ( new Field\Text( $strings['group_title']['title'] ) )
-            ->set_key( "{$key}_meta_contacts_title" )
-            ->set_name( 'meta_contacts_title' )
-            ->set_instructions( $strings['group_title']['instructions'] );
-
-        $contact_field = ( new Field\Textarea( $strings['contacts']['title'] ) )
-            ->set_key( "{$key}_contacts" )
-            ->set_name( 'contacts' )
-            ->set_instructions( $strings['contacts']['instructions'] );
-
-        $contacts_group_field = ( new Field\Group( $strings['contacts']['title'] ) )
-            ->set_name( 'contacts' );
-
-        $contacts_group_field->add_fields( [
-            $contacts_title_field,
-            $contact_field,
-        ] );
-
         $project_contacts_title_field = ( new Field\Text( $strings['contacts']['title'] ) )
             ->set_key( "{$key}_project_contacts_title" )
             ->set_name( 'project_contacts_title' )
@@ -473,7 +455,6 @@ class ProjectGroup {
             $website_group,
             $duration_group,
             $portfolio_group,
-            $contacts_group_field,
             $project_contacts_title_field,
             $project_contacts_fields,
             $funder_group,

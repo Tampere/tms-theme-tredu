@@ -6,10 +6,6 @@
     {>"views/single-project/sidebar__item" icon="date-range" sidebar_title=sidebar.duration.duration_title sidebar_content=sidebar.duration.duration /}
 {/isset}
 
-{@isset key1=sidebar.contacts.meta_contacts_title key2=sidebar.contacts.contacts method="AND" }
-    {>"views/single-project/sidebar__item" icon="user" sidebar_title=sidebar.contacts.meta_contacts_title sidebar_content=sidebar.contacts.contacts /}
-{/isset}
-
 {@isset key1=sidebar.project_contacts.project_contacts_title key2=sidebar.project_contacts.contacts method="AND" }
     <div class="single-project__info-group is-flex is-align-items-center mb-5 pt-4 pr-6 pb-4 pl-6">
         <div class="single-project__info-title">

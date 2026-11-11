@@ -131,6 +131,11 @@ class ContactFormatter implements \TMS\Theme\Tredu\Interfaces\Formatter {
             return [];
         }
 
+        // Skip deleted or unpublished contacts
+        $posts = array_filter( $posts, function ( $id ) {
+            return \get_post_status( $id ) === 'publish';
+        } );
+
         return array_map( function ( $id ) use ( $field_keys, $default_image ) {
             $fields = [];
 
